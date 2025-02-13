@@ -1,0 +1,1050 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIG Centro Holístico de Estudios Territoriales</title>
+
+    <!-- ArcGIS JS API CSS -->
+    <link rel="stylesheet" href="https://js.arcgis.com/4.26/esri/themes/light/main.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- ArcGIS JS API -->
+    <script src="https://js.arcgis.com/4.26/"></script>
+
+    <!-- Font Awesome CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+
+    <link rel="icon" href="https://centroholisticoestudiosterritoriales.com/images/LOGO_CHET_vect_clip.png" type="image/png" sizes="32x32">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<style>
+/* Estilos generales */
+html, body, #viewDiv {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+ overflow: hidden;
+}
+
+/* Estilos del modal */
+.modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+}
+
+.modal {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  max-width: 90%;
+  width: 600px;
+  text-align: center;
+}
+
+.modal h1 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.modal p {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  text-align: justify;
+}
+
+.modal button {
+  padding: 10px 20px;
+  background-color: #0078d4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal button:hover {
+  background-color: #005a9e;
+}
+
+/* Botones personalizados */
+.custom-button {
+  background: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 33px;
+  height: 33px;
+}
+
+.custom-button:hover {
+  background: #f0f0f0;
+}
+
+/* Botones en columna vertical */
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: fixed;
+  bottom: 290px;
+  left: 15px;
+}
+
+/* Ajustes para impresión */
+@media print {
+  body, html {
+    height: auto;
+  }
+  #viewDiv {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+
+/* Mapa Capturado para impresión */
+.map-container {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.print-map {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+}
+
+/* Estilos del formulario de contacto */
+.contact-form {
+  display: none;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.contact-form input, .contact-form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-form button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background-color: #45a049;
+}
+
+/* Selector de mapa base */
+.basemap-selector {
+  display: none;
+  position: fixed;
+  bottom: 80px;
+  left: 15px;
+  z-index: 999;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  padding: 10px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.basemap-selector button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.basemap-selector button:hover {
+  background: #f0f0f0;
+}
+
+/* Logo */
+.logo-box {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.7);
+  bottom: 16px;
+  left: 2px;
+  z-index: 10;
+}
+
+.logo-box img {
+  width: 40px;
+  height: auto;
+}
+
+/* Coordenadas y escala */
+.coordinates-box, .scale-box, .attribution-box {
+  position: fixed;
+  background-color: rgba(255, 255, 255, 0.7);
+  padding: 2px;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0);
+  font-size: 11px;
+  z-index: 10;
+}
+
+.coordinates-box {
+  bottom: 16px;
+  right: 0px;
+}
+
+.scale-box {
+  bottom: 16px;
+  right: 141px;
+}
+
+.attribution-box {
+  bottom: 16px;
+  right: 1450px;
+}
+
+/* Botón de medición */
+#toggleMeasurementBtn {
+  position: fixed;
+  bottom: 250px;
+  left: 15px;
+}
+
+/* Botón de capas */
+#toggleLayerList {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  z-index: 999;
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 33px;
+  height: 33px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-scale-bar {
+  position: fixed;
+  bottom: 15px;
+  left: 150px;
+  transform: scale(0.9);
+}
+
+
+#toggleIdentifyBtn  {
+   position: fixed;
+   top: 502px; 
+   left: 15px; 
+   z-index: 99;
+}
+
+
+/* Responsividad general */
+html, body, #viewDiv {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+/* Estilo base para todos los dispositivos */
+.button-container, #toggleMeasurementBtn, #toggleLayerList, #toggleIdentifyBtn {
+  position: fixed;
+  z-index: 1000;
+}
+
+/* Responsividad para pantallas medianas (tablets) */
+@media (max-width: 768px) {
+  .button-container {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+
+  #toggleMeasurementBtn {
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  #toggleLayerList {
+    top: 10px;
+    right: 15px;
+  }
+
+  #toggleIdentifyBtn {
+    top: 110px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .coordinates-box, .scale-box {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+
+  .modal, .contact-form {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .logo-box {
+    bottom: 20px;
+    left: 20px;
+  }
+
+  .logo-box img {
+    width: 32px;
+    height: auto;
+  }
+
+  .attribution-box {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .custom-scale-bar {
+    transform: rotate(90deg) scale(0.9);
+    transform-origin: bottom left;
+    bottom: 25px;
+    left: 85%;
+  }
+}
+
+/* Responsividad para pantallas muy pequeñas (teléfonos) */
+@media (max-width: 480px) {
+  .button-container {
+    flex-direction: row; /* Cambiar a fila para mantener el orden similar a tablets */
+    top: 10px;
+    left: 50%; /* Alinear al centro */
+    transform: translateX(-50%); /* Alinear al centro */
+    gap: 15px; /* Añadir un pequeño espacio entre los botones */
+  }
+
+  #toggleMeasurementBtn {
+    top: 60px;
+    left: 15%;
+    transform: translateX(-50%);
+  }
+
+  #toggleIdentifyBtn {
+    top: 110px;
+    left: 20%;
+    transform: translateX(-50%);
+  }
+
+  .coordinates-box, .scale-box, .attribution-box {
+    font-size: 10px;
+    padding: 3px 5px;
+  }
+
+  .logo-box {
+    bottom: 15px;
+    left: 15px;
+  }
+
+  .logo-box img {
+    width: 24px;
+    height: auto;
+  }
+
+  .custom-scale-bar {
+    transform: rotate(90deg) scale(0.7);
+    transform-origin: bottom left;
+    bottom: 20px;
+    left: 70%;
+  }
+}
+
+/* Mejoras adicionales para asegurar que todos los elementos se adapten correctamente */
+* {
+  box-sizing: border-box;
+}
+
+/* Asegurar que los formularios y modales sean siempre visibles */
+.modal, .contact-form {
+  max-width: 100%;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Ajustes generales para una experiencia fluida */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+.container {
+  width: 100%;
+  padding: 0 15px;
+}
+
+/* Asegura que los botones sean fáciles de presionar en pantallas táctiles */
+button {
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 8px;
+}
+
+/* Prevenir el desbordamiento en pantallas pequeñas */
+body {
+  overflow-x: hidden;
+}
+
+
+
+</style>
+
+
+
+</head>
+
+<body>
+    <!-- Contenedor principal del mapa -->
+    <div id="viewDiv"></div>
+
+    <!-- Logo -->
+    <div id="logoBox" class="logo-box">
+        <img src="https://github.com/centroholisticodeestudiosterritoriales/centroholisticodeestudiosterritoriales.github.io/blob/main/LOGO_CHET_vect_clip-removebg-preview.png?raw=true" alt="Logo del Centro Holístico de Estudios Territoriales">
+    </div>
+
+    <!-- Información de coordenadas y escala -->
+    <div id="coordinatesBox" class="coordinates-box">
+        <p id="coordinatesText">Lat: , Lon: </p>
+    </div>
+    <div id="scaleBox" class="scale-box">
+        <p id="scaleText">Escala: 1: </p>
+    </div>
+    <div id="attribution-box" class="attribution-box">
+        <p>Centro Holístico de <br> Estudios Territoriales </p>
+    </div>
+
+    <!-- Contenedor de botones -->
+    <div class="button-container">
+        <button class="custom-button text-gray-500 hover:bg-gray-200" onclick="printMap()">
+            <i class="fas fa-print"></i>
+        </button>
+        <button class="custom-button text-gray-500 hover:bg-gray-200" onclick="window.open('https://centroholisticoestudiosterritoriales.com', '_blank');">
+            <i class="fas fa-atom"></i>
+        </button>
+        <button class="custom-button text-gray-500 hover:bg-gray-200" onclick="toggleContactForm()">
+            <i class="fas fa-envelope"></i>
+        </button>
+        <button class="custom-button text-gray-500 hover:bg-gray-200" onclick="window.open('https://wkkf.maps.arcgis.com/apps/dashboards/b2f6d65637e944c3b3f1b98a054b8eaa', '_blank');">
+            <i class="fas fa-chart-line"></i>
+        </button>
+        <button class="custom-button text-gray-500 hover:bg-gray-200" onclick="shareMap()">
+            <i class="fas fa-share-alt"></i>
+        </button>
+        <button class="custom-button text-gray-500 hover:bg-gray-200" onclick="toggleBasemapGallery()">
+            <i class="esri-icon-basemap"></i>
+        </button>
+    </div>
+
+    <!-- Botón de medición -->
+    <button id="toggleMeasurementBtn" class="custom-button text-gray-500 hover:bg-gray-200">
+        <i class="fas fa-ruler-combined"></i>
+    </button>
+
+    <!-- Botón de capas -->
+    <button id="toggleLayerList" class="custom-button text-gray-500 hover:bg-gray-200">
+        <i class="fas fa-layer-group"></i>
+    </button>
+
+    <!-- Contenedor para la imagen capturada del mapa -->
+    <div id="printMapContainer" class="map-container">
+        <img id="printMap" src="" alt="Mapa para imprimir" />
+    </div>
+
+    <!-- Formulario de contacto -->
+    <div id="contactForm" class="contact-form">
+        <h3>Contacto</h3>
+        <input type="text" id="name" placeholder="Tu nombre" required>
+        <input type="email" id="email" placeholder="Tu correo electrónico" required>
+        <textarea id="comments" rows="4" placeholder="Comentarios" required></textarea>
+        <button onclick="sendEmail()">Enviar correo</button>
+    </div>
+
+    <!-- Panel de selección de mapas base -->
+    <div id="basemapSelector" class="basemap-selector"></div>
+
+    <!-- Modal de bienvenida -->
+    <div id="welcomeModal" class="modal-container">
+        <div class="modal">
+            <h1>Mensaje de Bienvenida</h1>
+            <p>Bienvenido(a) al Sistema de Información Geográfica del Centro Holístico de Estudios Territoriales. La información presentada en esta plataforma ha sido meticulosamente recopilada, procesada, analizada y puesta a disposición del público con el más alto estándar de excelencia técnica y rigurosidad científica. Es importante destacar que los datos y mapas aquí proporcionados tienen un propósito meramente informativo y educativo.</p>
+            <p>Al acceder y utilizar esta aplicación, usted acepta y reconoce que el Centro Holístico de Estudios Territoriales y todos sus colaboradores, socios y patrocinadores quedan exentos de cualquier responsabilidad, obligación o reclamo derivado del uso, interpretación o aplicación indebida de la información aquí contenida. El usuario asume plena responsabilidad por las acciones y decisiones tomadas en función de los datos consultados.</p>
+            <p>Para más información sobre nuestros métodos, fuentes y alcance de los estudios, le invitamos a visitar el sitio oficial del <a href="https://centroholisticoestudiosterritoriales.com/" target="_blank" class="text-blue-500 hover:underline">Centro Holístico de Estudios Territoriales</a>.</p>
+            <div class="mt-8 mb-8">
+                <img src="https://centroholisticoestudiosterritoriales.com/images/LOGO_CHET_vect_clip.png" alt="Imagen descriptiva" class="w-12 h-auto mx-auto">
+            </div>
+            <button onclick="closeModal()">Acepto los términos y condiciones</button>
+        </div>
+    </div>
+	
+
+<!-- Botón para encender/apagar el identificador con un ícono -->
+<button id="toggleIdentifyBtn" class="custom-button text-gray-500 hover:bg-gray-200" >
+    <i class="fas fa-info-circle"></i> 
+</button>
+
+
+
+<script>
+    function closeModal() {
+      const modal = document.getElementById("welcomeModal");
+      modal.style.display = "none";
+    }
+
+    // Mostrar el modal al cargar la página
+    window.onload = () => {
+      const modal = document.getElementById("welcomeModal");
+      modal.style.display = "flex";
+    };
+</script>
+
+
+<script>
+require([
+  "esri/Map", "esri/views/MapView", "esri/widgets/Home", "esri/widgets/Compass", 
+  "esri/widgets/Measurement", "esri/widgets/Search", "esri/widgets/BasemapGallery", 
+  "esri/Basemap", "esri/widgets/AreaMeasurement2D", "esri/layers/FeatureLayer", 
+  "esri/layers/GeoJSONLayer", "esri/widgets/LayerList", "esri/widgets/Legend", 
+  "esri/widgets/Expand", "esri/widgets/ScaleBar"
+], function (
+  Map, MapView, Home, Compass, Measurement, Search, BasemapGallery, 
+  Basemap, AreaMeasurement2D, FeatureLayer, GeoJSONLayer, LayerList, 
+  Legend, Expand, ScaleBar,  
+) {
+  
+  // Crear el mapa base
+  const map = new Map({ basemap: "hybrid" });
+
+  // Crear la vista del mapa
+  const view = new MapView({
+    container: "viewDiv",
+    map: map,
+    center: [-89.595, 18.725],  // Coordenadas iniciales
+    zoom: 10
+  });
+ 
+  
+// Configuración inicial del botón con el ícono de regla
+const toggleMeasurementBtn = document.getElementById("toggleMeasurementBtn");
+toggleMeasurementBtn.innerHTML = '<i class="fas fa-ruler"></i>';
+
+let areaMeasurement;
+let isMeasurementActive = false;
+
+toggleMeasurementBtn.addEventListener("click", () => {
+  if (isMeasurementActive) {
+    // Desactivar la herramienta de medición
+    view.ui.remove(areaMeasurement);
+    areaMeasurement.destroy();
+    areaMeasurement = null;
+    toggleMeasurementBtn.innerHTML = '<i class="fas fa-ruler"></i>';  // Ícono de regla cuando está desactivada
+  } else {
+    // Activar la herramienta de medición
+    areaMeasurement = new AreaMeasurement2D({ view: view });
+    view.ui.add(areaMeasurement, "bottom-right");
+    toggleMeasurementBtn.innerHTML = '<i class="fas fa-toggle-on"></i>';  // Ícono de interruptor encendido cuando está activa
+  }
+  isMeasurementActive = !isMeasurementActive;
+});
+
+
+
+view.on("double-click", function(event){
+  event.stopPropagation(); // Previene el zoom con doble toque
+});
+
+view.gestureHandling = false; // Desactiva otros gestos de zoom
+
+
+
+
+// Capas de ArcGIS
+const layers = [
+  new FeatureLayer({
+    url: "https://services5.arcgis.com/LZ4OoSCijnlgkZex/arcgis/rest/services/CK_Segmentacion_biofisica_tercer_orden/FeatureServer",
+    title: "Segmentación Biofísica 3er Orden",
+    minScale: 1000000,
+    maxScale: 100000,
+    visible: false,
+    opacity: 0.8,
+    renderer: {
+      type: "simple",
+      symbol: {
+        type: "simple-fill",
+        color: [0, 255, 255, 0.4], // Cian con transparencia
+        outline: { color: [0, 128, 255], width: 1 }
+      }
+    }
+  }),
+  new FeatureLayer({
+    url: "https://services5.arcgis.com/LZ4OoSCijnlgkZex/arcgis/rest/services/CK_Segmentacion_biofisica_cuarto_orden/FeatureServer",
+    title: "Segmentación Biofísica 4to Orden",
+    minScale: 1000000,
+    maxScale: 100000,
+    visible: false,
+    opacity: 1,
+    renderer: {
+      type: "simple",
+      symbol: {
+        type: "simple-fill",
+        color: [0, 255, 255, 0.4], // Cian con transparencia
+        outline: { color: [0, 128, 255], width: 1 }
+      }
+    }
+  }) // Fin del FeatureLayer
+]; // Fin del array layers
+
+const geojsonLayer = new GeoJSONLayer({
+  url: "https://raw.githubusercontent.com/centroholisticodeestudiosterritoriales/centroholisticodeestudiosterritoriales.github.io/refs/heads/main/SEGBIO.json",
+  title: "Capa GeoJSON desde GitHub",
+  minScale: 1000000,
+  maxScale: 100000,
+  visible: false,
+  renderer: {
+    type: "simple",
+    symbol: {
+      type: "simple-fill",
+      color: [0, 255, 255, 0.4], // Cian con transparencia
+      outline: { color: [0, 128, 255], width: 2 }
+    }
+  }
+});
+
+
+
+// Agregar todas las capas al mapa
+layers.push(geojsonLayer);
+
+
+
+for (const layer of layers) {
+  map.add(layer);
+}
+
+// Crear un div para mostrar las atribuciones centradas abajo en una sola línea
+const attributionDiv = document.createElement("div");
+attributionDiv.style.padding = "2px";
+attributionDiv.style.background = "rgba(255, 255, 255, 0.8)";
+attributionDiv.style.fontSize = "12px";
+attributionDiv.style.position = "absolute";
+attributionDiv.style.bottom = "16px";
+attributionDiv.style.left = "50%";  // Centrado horizontalmente
+attributionDiv.style.transform = "translateX(-50%)";  // Ajuste para centrar completamente
+attributionDiv.style.borderRadius = "5px";  // Bordes redondeados
+attributionDiv.style.boxShadow = "0 2px 6px rgba(0, 0, 0, 0.3)";  // Sombra suave
+document.body.appendChild(attributionDiv);
+
+// Definir las atribuciones para cada capa
+//Datos proporcionados por [Institución/Fuente 2]
+const attributions = {
+  "Segmentación Biofísica 3er Orden": "Datos proporcionados por Centro Holístico de Estudios Territoriales",  
+  "Segmentación Biofísica 4to Orden": "Datos proporcionados por Centro Holístico de Estudios Territoriales",
+  "Capa GeoJSON desde GitHub": "Datos proporcionados por Centro Holístico de Estudios Territoriales"
+};
+
+// Función para actualizar las atribuciones cuando las capas se activan
+function updateAttributions() {
+  let activeAttributions = [];
+
+  layers.concat([geojsonLayer]).forEach(layer => {
+    if (layer.visible) {
+      activeAttributions.push(attributions[layer.title]);
+    }
+  });
+
+  // Unir las atribuciones en una sola línea separadas por punto y coma
+  attributionDiv.innerHTML = activeAttributions.length > 0 
+    ? activeAttributions.join(" ; ") 
+    : "";  //escribir comentario
+}
+
+// Escuchar cambios de visibilidad en las capas
+layers.concat([geojsonLayer]).forEach(layer => {
+  layer.watch("visible", updateAttributions);
+});
+
+// Inicializar la atribución
+updateAttributions();
+
+
+
+
+
+// Agregar todas las capas al mapa
+layers.forEach(layer => map.add(layer));
+map.add(geojsonLayer); // Agregar la capa GeoJSON
+
+// Escala métrica
+const scaleBar = new ScaleBar({
+  view: view,
+  unit: "metric",
+  style: "ruler"
+});
+view.ui.add(scaleBar, { position: "manual", index: 0 });
+scaleBar.container.classList.add("custom-scale-bar");
+
+// Botón de activación de identificación
+let identifyActive = false;
+const toggleIdentifyBtn = document.getElementById("toggleIdentifyBtn");
+toggleIdentifyBtn.innerHTML = '<i class="fas fa-info-circle"></i>';
+
+toggleIdentifyBtn.addEventListener("click", () => {
+  identifyActive = !identifyActive;
+  toggleIdentifyBtn.innerHTML = identifyActive
+    ? '<i class="fas fa-toggle-on"></i>'
+    : '<i class="fas fa-info-circle"></i>';
+  view.graphics.removeAll();
+  view.popup.close();
+});
+
+view.on("click", async (event) => {
+  if (!identifyActive) return;
+
+  view.graphics.removeAll(); // Eliminar gráficos previos antes de procesar la selección
+
+  const screenPoint = { x: event.x, y: event.y };
+  const hitTestResult = await view.hitTest(screenPoint);
+  let popupContent = `<strong>Detalles de las entidades seleccionadas:</strong><br><br>`;
+  let highlightGraphics = [];
+
+  // Procesar capas alojadas en ArcGIS Online
+  for (const result of hitTestResult.results) {
+    const graphic = result.graphic;
+    const layer = graphic.layer;
+
+    // Verificar si la capa está visible
+    if (graphic && layer instanceof FeatureLayer && layer.visible) {
+      popupContent += `<hr><strong>Capa: ${layer.title}</strong><br>`;
+      const objectId = graphic.attributes[layer.objectIdField];
+      const query = layer.createQuery();
+      query.objectIds = [objectId];
+      const featureSet = await layer.queryFeatures(query);
+
+      if (featureSet.features.length > 0) {
+        const attributes = featureSet.features[0].attributes;
+        const fields = layer.fields;
+        popupContent += `<table border="1" cellpadding="5" cellspacing="0">`;
+        fields.forEach(field => {
+          popupContent += `
+            <tr>
+              <td><strong>${field.alias || field.name}</strong></td>
+              <td>${attributes[field.name]}</td>
+            </tr>`;
+        });
+        popupContent += `</table>`;
+      }
+
+      // Resaltar la entidad sin borde negro
+      const highlightSymbol = {
+        type: "simple-fill",
+        color: [255, 255, 0, 0.5], // Amarillo semitransparente
+        outline: { color: [255, 255, 0], width: 2 }
+      };
+      const highlightedGraphic = graphic.clone();
+      highlightedGraphic.symbol = highlightSymbol;
+      highlightGraphics.push(highlightedGraphic);
+    }
+  }
+
+  // Consultar la capa GeoJSON manualmente solo si está visible
+  if (geojsonLayer.visible) {
+    const geoQuery = geojsonLayer.createQuery();
+    geoQuery.geometry = event.mapPoint;
+    geoQuery.spatialRelationship = "intersects";
+
+    const geoFeatures = await geojsonLayer.queryFeatures(geoQuery);
+
+    if (geoFeatures.features.length > 0) {
+      popupContent += `<hr><strong>Capa: ${geojsonLayer.title}</strong><br>`;
+      popupContent += `<table border="1" cellpadding="5" cellspacing="0">`;
+      geoFeatures.features.forEach(feature => {
+        for (const key in feature.attributes) {
+          popupContent += `
+            <tr>
+              <td><strong>${key}</strong></td>
+              <td>${feature.attributes[key]}</td>
+            </tr>`;
+        }
+
+        // Resaltar la entidad GeoJSON
+        const highlightSymbol = {
+          type: "simple-line",
+          color: "yellow",
+          width: 3
+        };
+        const highlightedGraphic = feature.clone();
+        highlightedGraphic.symbol = highlightSymbol;
+        highlightGraphics.push(highlightedGraphic);
+      });
+      popupContent += `</table>`;
+    }
+  }
+
+  // Mostrar popup solo si hay entidades resaltadas
+  if (highlightGraphics.length > 0) {
+    view.graphics.removeAll();
+    highlightGraphics.forEach(graphic => view.graphics.add(graphic));
+
+    view.popup.open({
+      location: event.mapPoint,
+      content: popupContent,
+      title: "Detalles de las entidades"
+    });
+  }
+});
+
+// Agregar un listener para detectar cambios en la visibilidad de las capas y limpiar resaltados
+map.layers.forEach(layer => {
+  layer.watch("visible", (newValue) => {
+    if (!newValue) {
+      view.graphics.removeAll();
+    }
+  });
+});
+
+
+
+const layerList = new LayerList({ 
+  view: view,
+  listItemCreatedFunction: function(event) {
+    const item = event.item;
+    const layer = item.layer;
+
+    // Crear control de opacidad
+    const opacityControl = document.createElement("input");
+    opacityControl.type = "range";
+    opacityControl.min = 0;
+    opacityControl.max = 1;
+    opacityControl.step = 0.1;
+    opacityControl.value = layer.opacity;
+    opacityControl.style.width = "100%";
+    opacityControl.addEventListener("input", function() {
+      layer.opacity = parseFloat(this.value);
+    });
+
+    layer.watch("opacity", function(newOpacity) {
+      opacityControl.value = newOpacity;
+    });
+
+    // Crear el botón de descarga con el ícono de flecha hacia abajo
+    const downloadBtn = document.createElement("button");
+    downloadBtn.innerHTML = '<i class="fas fa-arrow-down"></i> .json';
+    downloadBtn.style.backgroundColor = "#4CAF50";
+    downloadBtn.style.color = "white";
+    downloadBtn.style.border = "none";
+    downloadBtn.style.padding = "5px 10px";
+    downloadBtn.style.cursor = "pointer";
+    downloadBtn.style.marginTop = "8px";
+
+    // Función de descarga
+    downloadBtn.addEventListener("click", async () => {
+      const query = layer.createQuery();
+      const featureSet = await layer.queryFeatures(query);
+
+      if (featureSet.features.length > 0) {
+        const geojson = {
+          type: "FeatureCollection",
+          features: featureSet.features.map(feature => ({
+            type: "Feature",
+            geometry: feature.geometry.toJSON(),
+            properties: feature.attributes
+          }))
+        };
+
+        // Crear un Blob para descargar el archivo GeoJSON con formato indentado
+        const geojsonBlob = new Blob(
+          [JSON.stringify(geojson, null, 2)], // Indentación de 2 espacios
+          { type: "application/geo+json" }
+        );
+
+        const url = URL.createObjectURL(geojsonBlob);
+
+        // Crear un enlace para descargar el archivo
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = `${layer.title}.geojson`;
+        a.click();
+        URL.revokeObjectURL(url);
+      } else {
+        alert("No se encontraron datos para descargar.");
+      }
+    });
+
+    const legend = new Legend({
+      view: view,
+      layerInfos: [{ layer: layer, title: "" }]
+    });
+
+    // Asignar descripción según el título del ítem
+    let description = "";
+    if (item.title === "Segmentación Biofísica 3er Orden") {
+      description = "Segmentación biofísica a nivel de tercer orden, útil para análisis generales.";
+    } else if (item.title === "Segmentación Biofísica 4to Orden") {
+      description = "Segmentación biofísica a nivel de cuarto orden, proporcionando mayor detalle.";
+    }
+
+    // Crear contenedor de la descripción
+    const descriptionElement = document.createElement("p");
+    descriptionElement.textContent = description;
+    descriptionElement.style.marginTop = "8px";
+    descriptionElement.style.fontSize = "12px";
+    descriptionElement.style.color = "#666";
+
+    // Contenedor del panel
+    const panelContainer = document.createElement("div");
+    panelContainer.appendChild(opacityControl);
+    panelContainer.appendChild(descriptionElement);
+    legend.container = panelContainer;
+    panelContainer.appendChild(downloadBtn); // Añadir el botón de descarga
+
+    item.panel = {
+      content: panelContainer,
+      open: true
+    };
+  }
+});
+
+
+  view.ui.add(layerList, "top-right");
+  layerList.visible = false;
+
+  const toggleButton = document.getElementById("toggleLayerList");
+  toggleButton.addEventListener("click", function() {
+    layerList.visible = !layerList.visible;
+  });
+
+  const compass = new Compass({ view });
+  view.ui.add(compass, "top-left");
+  const homeWidget = new Home({ view });
+  view.ui.add(homeWidget, "top-left");
+
+  const basemapGallery = new BasemapGallery({
+    view: view,
+    container: document.getElementById("basemapSelector")
+  });
+
+  function toggleBasemapGallery() {
+    const basemapSelector = document.getElementById("basemapSelector");
+    basemapSelector.style.display = basemapSelector.style.display === 'none' ? 'block' : 'none';
+  }
+
+  function setBasemap(basemapId) {
+    map.basemap = new Basemap({ id: basemapId });
+    toggleBasemapGallery();
+  }
+
+  function printMap() {
+    view.when(() => {
+      view.takeScreenshot().then((screenshot) => {
+        const printMapImg = document.getElementById("printMap");
+        printMapImg.src = screenshot.dataUrl;
+        document.getElementById("printMapContainer").classList.add("print-map");
+        setTimeout(() => {
+          window.print();
+          document.getElementById("printMapContainer").classList.remove("print-map");
+        }, 1000);
+      });
+    });
+  }
+
+  function shareMap() {
+    const mapUrl = window.location.href;
+    const shareText = `¡Mira este mapa! ${mapUrl}`;
+    if (navigator.share) {
+      navigator.share({ title: 'Mapa de ArcGIS', text: shareText, url: mapUrl }).catch(console.error);
+    } else {
+      alert('Tu navegador no soporta compartir, copia y pega la URL: ' + mapUrl);
+    }
+  }
+
+  function toggleContactForm() {
+    const form = document.getElementById('contactForm');
+    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+  }
+
+  function sendEmail() {
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const comments = document.getElementById('comments').value;
+    window.location.href = `mailto:geovanni.agorea@gmail.com?subject=Contacto desde el SIG del Centro Holístico de Estudios Territoriales&body=Nombre: ${name}\nCorreo: ${email}\nComentarios:\n${comments}`;
+    toggleContactForm();
+  }
+
+  view.on("pointer-move", (event) => {
+    const latLon = view.toMap({ x: event.x, y: event.y });
+    document.getElementById("coordinatesText").innerHTML = `Lat: ${latLon.latitude.toFixed(4)}, Lon: ${latLon.longitude.toFixed(4)}`;
+  });
+
+  view.watch("scale", (newValue) => {
+    document.getElementById("scaleText").innerHTML = `Escala: 1:${Math.round(newValue)}`;
+  });
+
+  window.printMap = printMap;
+  window.shareMap = shareMap;
+  window.toggleContactForm = toggleContactForm;
+  window.sendEmail = sendEmail;
+  window.toggleBasemapGallery = toggleBasemapGallery;
+  window.setBasemap = setBasemap;
+});
+
+
+</script>
+
+    
+
+</body>
+</html>
