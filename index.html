@@ -1,17 +1,14 @@
-
-
-```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CHET | Portafolio de Evidencias</title>
+  <title>CHET | Portafolio</title>
 
   <meta
     name="description"
-    content="Portafolio de evidencias del Centro Holístico de Estudios Territoriales: visores, documentos técnicos y plataformas territoriales."
+    content="Portafolio del Centro Holístico de Estudios Territoriales: visores, documentos técnicos y plataformas territoriales."
   >
 
   <style>
@@ -20,9 +17,9 @@
       --azul-claro: #eaf2f5;
       --verde: #356d4d;
       --verde-claro: #e7f1e9;
-      --gris-fondo: #f6f8f8;
+      --gris-fondo: #f5f7f8;
       --gris-linea: #d9e1e3;
-      --gris-texto: #52616a;
+      --gris-texto: #53616a;
       --blanco: #ffffff;
       --sombra: 0 10px 25px rgba(20, 50, 66, 0.10);
       --ancho-maximo: 1180px;
@@ -73,12 +70,12 @@
       top: 0;
       z-index: 1000;
       border-bottom: 1px solid var(--gris-linea);
-      background: rgba(255, 255, 255, 0.96);
+      background: rgba(255, 255, 255, 0.97);
       backdrop-filter: blur(10px);
     }
 
     .navegacion {
-      min-height: 78px;
+      min-height: 80px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -91,8 +88,8 @@
     }
 
     .logo-navegacion {
-      width: 180px;
-      max-height: 58px;
+      width: 190px;
+      max-height: 60px;
       object-fit: contain;
       object-position: left center;
     }
@@ -127,158 +124,16 @@
     }
 
     /* =====================================================
-       PORTADA
-    ====================================================== */
-
-    .portada {
-      padding: 75px 0;
-      background:
-        linear-gradient(rgba(24, 56, 77, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(24, 56, 77, 0.04) 1px, transparent 1px),
-        #f8faf9;
-      background-size: 34px 34px;
-    }
-
-    .portada-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 45px;
-      align-items: center;
-    }
-
-    .logo-portada-negro {
-      width: min(390px, 90%);
-      height: auto;
-      margin-bottom: 24px;
-      object-fit: contain;
-      object-position: left center;
-    }
-
-    .etiqueta {
-      display: inline-block;
-      margin-bottom: 15px;
-      padding: 7px 12px;
-      border-radius: 20px;
-      color: var(--verde);
-      background: var(--verde-claro);
-      font-size: 0.76rem;
-      font-weight: 800;
-      letter-spacing: 0.8px;
-      text-transform: uppercase;
-    }
-
-    .portada h1 {
-      max-width: 720px;
-      margin: 0;
-      color: var(--azul);
-      font-size: clamp(2.2rem, 4.5vw, 3.9rem);
-      line-height: 1.1;
-      letter-spacing: -1.2px;
-    }
-
-    .portada h1 span {
-      color: var(--verde);
-    }
-
-    .portada p {
-      max-width: 720px;
-      margin: 20px 0 0;
-      color: var(--gris-texto);
-      font-size: 1.03rem;
-    }
-
-    .botones-portada {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 28px;
-    }
-
-    .boton {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 45px;
-      padding: 10px 18px;
-      border-radius: 8px;
-      font-size: 0.9rem;
-      font-weight: 800;
-      transition: transform 0.2s ease, background 0.2s ease;
-    }
-
-    .boton:hover {
-      transform: translateY(-2px);
-    }
-
-    .boton-principal {
-      color: white;
-      background: var(--azul);
-    }
-
-    .boton-principal:hover {
-      background: var(--verde);
-    }
-
-    .boton-secundario {
-      border: 1px solid #bfcfd5;
-      color: var(--azul);
-      background: white;
-    }
-
-    .boton-secundario:hover {
-      background: var(--azul-claro);
-    }
-
-    .tarjeta-experiencia {
-      padding: 30px;
-      border: 1px solid var(--gris-linea);
-      border-radius: var(--radio);
-      background: white;
-      box-shadow: var(--sombra);
-    }
-
-    .tarjeta-experiencia h2 {
-      margin: 0 0 16px;
-      color: var(--azul);
-      font-size: 1.2rem;
-    }
-
-    .lista-experiencia {
-      display: grid;
-      gap: 14px;
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-
-    .lista-experiencia li {
-      display: grid;
-      grid-template-columns: 35px 1fr;
-      gap: 11px;
-      align-items: start;
-      color: var(--gris-texto);
-      font-size: 0.91rem;
-    }
-
-    .numero-experiencia {
-      display: grid;
-      place-items: center;
-      width: 31px;
-      height: 31px;
-      border-radius: 50%;
-      color: var(--verde);
-      background: var(--verde-claro);
-      font-size: 0.78rem;
-      font-weight: 800;
-    }
-
-    /* =====================================================
        PORTAFOLIO
     ====================================================== */
 
     .portafolio {
-      padding: 75px 0;
-      background: white;
+      padding: 70px 0 76px;
+      background:
+        linear-gradient(rgba(24, 56, 77, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(24, 56, 77, 0.035) 1px, transparent 1px),
+        var(--gris-fondo);
+      background-size: 34px 34px;
     }
 
     .encabezado-seccion {
@@ -286,7 +141,7 @@
       align-items: end;
       justify-content: space-between;
       gap: 25px;
-      margin-bottom: 30px;
+      margin-bottom: 28px;
     }
 
     .titulo-seccion {
@@ -302,10 +157,11 @@
       text-transform: uppercase;
     }
 
+    .titulo-seccion h1,
     .titulo-seccion h2 {
       margin: 0;
       color: var(--azul);
-      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      font-size: clamp(1.85rem, 3vw, 2.6rem);
       line-height: 1.2;
     }
 
@@ -521,7 +377,7 @@
 
     .equipo {
       padding: 75px 0;
-      background: var(--gris-fondo);
+      background: white;
     }
 
     .grid-equipo {
@@ -612,7 +468,7 @@
       padding: 28px;
       border: 1px solid var(--gris-linea);
       border-radius: var(--radio);
-      background: white;
+      background: var(--gris-fondo);
     }
 
     .org-central {
@@ -622,12 +478,12 @@
       border: 1px solid var(--gris-linea);
       border-radius: 13px;
       text-align: center;
-      background: #f8fbfa;
+      background: white;
     }
 
     .logo-organigrama {
-      width: min(220px, 90%);
-      max-height: 70px;
+      width: min(230px, 90%);
+      max-height: 75px;
       margin: 0 auto 12px;
       object-fit: contain;
     }
@@ -762,8 +618,7 @@
     ====================================================== */
 
     .contacto {
-      padding: 62px 0;
-      color: white;
+      padding: 58px 0;
       background: var(--azul);
     }
 
@@ -776,7 +631,8 @@
 
     .contacto h2 {
       margin: 0;
-      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      color: white;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
       line-height: 1.2;
     }
 
@@ -787,21 +643,22 @@
     }
 
     .contacto-logo {
-      padding: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      padding: 22px;
+      border: 1px solid rgba(255, 255, 255, 0.22);
       border-radius: 14px;
-      background: rgba(255, 255, 255, 0.07);
+      background: white;
     }
 
-    .logo-blanco {
-      width: min(255px, 90%);
-      margin-bottom: 15px;
+    .logo-contacto {
+      width: min(245px, 90%);
+      margin-bottom: 10px;
       object-fit: contain;
     }
 
     .contacto-logo p {
       margin: 0;
-      font-size: 0.87rem;
+      color: var(--gris-texto);
+      font-size: 0.86rem;
     }
 
     .pie {
@@ -827,7 +684,6 @@
     ====================================================== */
 
     @media (max-width: 960px) {
-      .portada-grid,
       .contacto-grid {
         grid-template-columns: 1fr;
       }
@@ -848,10 +704,6 @@
       .org-area::before {
         display: none;
       }
-
-      .org-area {
-        padding-top: 0;
-      }
     }
 
     @media (max-width: 720px) {
@@ -868,30 +720,21 @@
       }
 
       .logo-navegacion {
-        width: 165px;
-        max-height: 52px;
+        width: 170px;
+        max-height: 55px;
       }
 
       .menu {
         gap: 10px 15px;
       }
 
-      .portada,
       .portafolio,
       .equipo {
         padding: 55px 0;
       }
 
-      .portada h1 {
-        font-size: 2.35rem;
-      }
-
       .nota {
         max-width: none;
-      }
-
-      .tarjeta-experiencia {
-        padding: 23px;
       }
 
       .organigrama-contenedor {
@@ -914,16 +757,15 @@
   <header class="encabezado">
     <div class="contenedor navegacion">
 
-      <a class="marca" href="#inicio" aria-label="Ir al inicio">
+      <a class="marca" href="#portafolio" aria-label="Ir al portafolio">
         <img
           class="logo-navegacion"
-          src="LOGO_CHET_vect_clip.png"
+          src="LOGO_CHET_vect_clip.jpg"
           alt="Centro Holístico de Estudios Territoriales"
         >
       </a>
 
       <nav class="menu" aria-label="Navegación principal">
-        <a href="#inicio">Inicio</a>
         <a href="#portafolio">Portafolio</a>
         <a href="#equipo">Equipo</a>
         <a class="menu-contacto" href="#contacto">Contacto</a>
@@ -935,78 +777,6 @@
   <main>
 
     <!-- ===================================================
-         PORTADA
-    ==================================================== -->
-    <section class="portada" id="inicio">
-      <div class="contenedor portada-grid">
-
-        <div>
-          <img
-            class="logo-portada-negro"
-            src="LOGO_CHET_vect_clip.png"
-            alt="Centro Holístico de Estudios Territoriales"
-          >
-
-          <div class="etiqueta">Portafolio de evidencias</div>
-
-          <h1>
-            Información territorial para
-            <span>decisiones mejor informadas.</span>
-          </h1>
-
-          <p>
-            Somos una empresa de reciente creación, respaldada por la experiencia
-            individual de sus integrantes, quienes cuentan con más de diez años de
-            trayectoria profesional en diferentes instituciones públicas y privadas de México.
-          </p>
-
-          <p>
-            Este sitio reúne evidencias de trabajo relacionadas con análisis territorial,
-            cartografía, monitoreo ambiental, conservación, percepción remota y plataformas
-            geoespaciales.
-          </p>
-
-          <div class="botones-portada">
-            <a class="boton boton-principal" href="#portafolio">
-              Ver portafolio
-            </a>
-
-            <a class="boton boton-secundario" href="#equipo">
-              Conocer al equipo
-            </a>
-          </div>
-        </div>
-
-        <aside class="tarjeta-experiencia">
-          <h2>Una empresa nueva con experiencia consolidada</h2>
-
-          <ul class="lista-experiencia">
-            <li>
-              <span class="numero-experiencia">01</span>
-              <span>Empresa de reciente creación orientada al análisis y gestión territorial.</span>
-            </li>
-
-            <li>
-              <span class="numero-experiencia">02</span>
-              <span>Trayectoria individual de más de diez años en instituciones públicas y privadas de México.</span>
-            </li>
-
-            <li>
-              <span class="numero-experiencia">03</span>
-              <span>Experiencia aplicada en proyectos ambientales, territoriales y geoespaciales.</span>
-            </li>
-
-            <li>
-              <span class="numero-experiencia">04</span>
-              <span>Equipos técnicos organizados por áreas de especialización.</span>
-            </li>
-          </ul>
-        </aside>
-
-      </div>
-    </section>
-
-    <!-- ===================================================
          PORTAFOLIO
     ==================================================== -->
     <section class="portafolio" id="portafolio">
@@ -1014,13 +784,13 @@
 
         <div class="encabezado-seccion">
           <div class="titulo-seccion">
-            <p class="subtitulo">Portafolio de evidencias</p>
+            <p class="subtitulo">Centro Holístico de Estudios Territoriales</p>
 
-            <h2>Visores, documentos técnicos y plataformas territoriales.</h2>
+            <h1>Portafolio de evidencias territoriales.</h1>
 
             <p>
-              Selección de herramientas y recursos vinculados con experiencias de análisis,
-              monitoreo, cartografía, planeación y gestión socioambiental.
+              Visores, documentos técnicos y plataformas vinculadas con análisis territorial,
+              cartografía, monitoreo ambiental, conservación y gestión socioambiental.
             </p>
           </div>
 
@@ -1038,9 +808,7 @@
 
         <div class="galeria">
 
-          <!-- =================================================
-               VISORES CHET
-          ================================================== -->
+          <!-- VISORES CHET -->
 
           <article class="tarjeta" data-category="visor">
             <div class="tarjeta-portada portada-sar">
@@ -1129,9 +897,7 @@
             </div>
           </article>
 
-          <!-- =================================================
-               DOCUMENTOS TÉCNICOS
-          ================================================== -->
+          <!-- DOCUMENTOS TÉCNICOS -->
 
           <article class="tarjeta" data-category="documento">
             <div class="tarjeta-portada portada-pdf-verde">
@@ -1249,9 +1015,7 @@
             </div>
           </article>
 
-          <!-- =================================================
-               PLATAFORMAS TERRITORIALES
-          ================================================== -->
+          <!-- PLATAFORMAS TERRITORIALES -->
 
           <article class="tarjeta" data-category="plataforma">
             <div class="tarjeta-portada portada-costa">
@@ -1412,10 +1176,10 @@
           <div class="titulo-seccion">
             <p class="subtitulo">Equipo y estructura operativa</p>
 
-            <h2>Tres áreas estratégicas con equipos técnicos de apoyo.</h2>
+            <h2>Responsables de las áreas estratégicas.</h2>
 
             <p>
-              La empresa se organiza en áreas complementarias, coordinadas por sus responsables y respaldadas por equipos técnicos para atender proyectos territoriales y ambientales.
+              La empresa se organiza en tres áreas complementarias, cada una respaldada por un equipo técnico de apoyo.
             </p>
           </div>
         </div>
@@ -1435,7 +1199,7 @@
               </p>
 
               <p>
-                Coordina procesos de planificación, análisis territorial, cartografía aplicada y gestión de información para la toma de decisiones.
+                Coordina procesos de planificación, análisis territorial, cartografía aplicada y gestión de información.
               </p>
             </div>
           </article>
@@ -1486,7 +1250,7 @@
             <h3>Coordinación de áreas y equipos técnicos.</h3>
 
             <p>
-              Los subequipos se muestran como unidades de apoyo técnico sin especificar a sus integrantes.
+              Los subequipos se muestran como unidades de apoyo sin especificar a sus integrantes.
             </p>
           </div>
 
@@ -1495,7 +1259,7 @@
             <div class="org-central">
               <img
                 class="logo-organigrama"
-                src="LOGO_CHET_vect_clip.png"
+                src="LOGO_CHET_vect_clip.jpg"
                 alt="Centro Holístico de Estudios Territoriales"
               >
 
@@ -1585,19 +1349,19 @@
 
           <p>
             Xalapa, Veracruz, México.<br>
-            Empresa de reciente creación con experiencia técnica consolidada en el sector territorial y ambiental.
+            Portafolio de evidencias territoriales.
           </p>
         </div>
 
         <aside class="contacto-logo">
           <img
-            class="logo-blanco"
-            src="logo_CHET_tranparent_W.png"
+            class="logo-contacto"
+            src="LOGO_CHET_vect_clip.jpg"
             alt="Centro Holístico de Estudios Territoriales"
           >
 
           <p>
-            Portafolio de Evidencias Territoriales.
+            Información territorial para proyectos y procesos de decisión.
           </p>
         </aside>
 
@@ -1650,4 +1414,4 @@
 
 </body>
 </html>
-```
+
