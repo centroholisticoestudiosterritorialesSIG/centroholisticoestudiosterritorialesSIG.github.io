@@ -1,229 +1,1954 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Catálogo de Mapas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CHET | Centro Holístico de Estudios Territoriales</title>
+
   <style>
+    :root {
+      --azul-oscuro: #16324f;
+      --azul-medio: #235789;
+      --azul-claro: #dceaf7;
+      --verde: #2f6b4f;
+      --verde-claro: #dfeee5;
+      --arena: #f4f1ea;
+      --gris-fondo: #f6f8fa;
+      --gris-texto: #4a5561;
+      --gris-suave: #e8edf1;
+      --blanco: #ffffff;
+      --sombra: 0 12px 30px rgba(22, 50, 79, 0.12);
+      --sombra-suave: 0 6px 18px rgba(22, 50, 79, 0.08);
+      --radio: 18px;
+      --max-width: 1250px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--gris-fondo);
+      color: #1f2a35;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .contenedor {
+      width: min(92%, var(--max-width));
+      margin: 0 auto;
+    }
+
+    /* =========================================================
+       ENCABEZADO
+    ========================================================= */
+    .barra-superior {
+      background: #10263c;
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.88rem;
+    }
+
+    .barra-superior .contenedor {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      padding: 8px 0;
+    }
+
+    .barra-superior p {
+      margin: 0;
+    }
+
+    .encabezado {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(22, 50, 79, 0.09);
+    }
+
+    .navegacion {
+      min-height: 78px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .marca {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 260px;
+    }
+
+    .marca-simbolo {
+      width: 46px;
+      height: 46px;
+      border-radius: 12px;
+      background:
+        linear-gradient(135deg, rgba(35, 87, 137, 0.98), rgba(47, 107, 79, 0.96));
+      display: grid;
+      place-items: center;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      box-shadow: 0 6px 14px rgba(22, 50, 79, 0.18);
+    }
+
+    .marca-texto strong {
+      display: block;
+      color: var(--azul-oscuro);
+      font-size: 0.95rem;
+      line-height: 1.15;
+      letter-spacing: 0.2px;
+    }
+
+    .marca-texto span {
+      display: block;
+      color: var(--gris-texto);
+      font-size: 0.73rem;
+      margin-top: 3px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #405260;
+    }
+
+    .menu a {
+      transition: color 0.25s ease;
+    }
+
+    .menu a:hover {
+      color: var(--azul-medio);
+    }
+
+    .boton-menu {
+      padding: 10px 16px;
+      color: white !important;
+      border-radius: 9px;
+      background: var(--azul-medio);
+      box-shadow: 0 4px 12px rgba(35, 87, 137, 0.18);
+    }
+
+    .boton-menu:hover {
+      background: var(--azul-oscuro);
+    }
+
+    /* =========================================================
+       PORTADA
+    ========================================================= */
+    .portada {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at top right, rgba(105, 181, 133, 0.35), transparent 32%),
+        radial-gradient(circle at left bottom, rgba(91, 159, 211, 0.28), transparent 30%),
+        linear-gradient(135deg, #10263c 0%, #16324f 48%, #245d67 100%);
+      padding: 88px 0 76px;
+    }
+
+    .portada::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.15;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.16) 1px, transparent 1px);
+      background-size: 48px 48px;
+      mask-image: linear-gradient(to bottom, black, transparent);
+      pointer-events: none;
+    }
+
+    .portada-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(290px, 0.7fr);
+      gap: 60px;
+      align-items: center;
+    }
+
+    .etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: #dcefe3;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      border: 1px solid rgba(220, 239, 227, 0.35);
+      border-radius: 30px;
+      padding: 8px 13px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .etiqueta::before {
+      content: "●";
+      color: #83d39a;
+      font-size: 0.72rem;
+    }
+
+    .portada h1 {
+      margin: 18px 0 18px;
+      max-width: 850px;
+      font-size: clamp(2.35rem, 5vw, 4.25rem);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+    }
+
+    .portada h1 span {
+      color: #9ed7b0;
+    }
+
+    .portada p {
+      margin: 0;
+      max-width: 720px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 1.08rem;
+    }
+
+    .acciones-portada {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 30px;
+    }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 11px 19px;
+      border-radius: 9px;
+      font-size: 0.93rem;
+      font-weight: 700;
+      transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .boton:hover {
+      transform: translateY(-2px);
+    }
+
+    .boton-primario {
+      background: #ffffff;
+      color: var(--azul-oscuro);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+    }
+
+    .boton-primario:hover {
+      background: #edf5f0;
+    }
+
+    .boton-secundario {
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .boton-secundario:hover {
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .panel-portada {
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--radio);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+      backdrop-filter: blur(10px);
+    }
+
+    .panel-portada h2 {
+      margin: 0 0 16px;
+      font-size: 1.15rem;
+      letter-spacing: 0.2px;
+    }
+
+    .lista-portada {
+      display: grid;
+      gap: 14px;
       margin: 0;
       padding: 0;
-      background-color: #f4f4f4;
-      color: #333;
+      list-style: none;
     }
 
-    header {
-      background-color: #2c3e50;
-      color: white;
-      padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: 2em;
-    }
-
-    .gallery {
+    .lista-portada li {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
-      padding: 40px;
+      grid-template-columns: 32px 1fr;
+      gap: 11px;
+      align-items: start;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 0.92rem;
     }
 
-    .card {
-      background-color: white;
+    .lista-portada b {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      color: #dff5e5;
+      background: rgba(109, 191, 136, 0.22);
+      font-size: 0.78rem;
+    }
+
+    /* =========================================================
+       SECCIONES GENERALES
+    ========================================================= */
+    section {
+      padding: 78px 0;
+    }
+
+    .encabezado-seccion {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 26px;
+      margin-bottom: 34px;
+    }
+
+    .titulo-seccion {
+      max-width: 760px;
+    }
+
+    .subtitulo {
+      margin: 0 0 8px;
+      color: var(--verde);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.15px;
+      text-transform: uppercase;
+    }
+
+    .titulo-seccion h2 {
+      margin: 0;
+      color: var(--azul-oscuro);
+      font-size: clamp(1.8rem, 3vw, 2.65rem);
+      line-height: 1.18;
+      letter-spacing: -0.6px;
+    }
+
+    .titulo-seccion p {
+      margin: 12px 0 0;
+      color: var(--gris-texto);
+      font-size: 1rem;
+    }
+
+    .nota-seccion {
+      max-width: 330px;
+      padding: 14px 16px;
+      border-left: 4px solid var(--verde);
+      border-radius: 0 10px 10px 0;
+      color: #456052;
+      background: var(--verde-claro);
+      font-size: 0.88rem;
+    }
+
+    /* =========================================================
+       PRESENTACIÓN
+    ========================================================= */
+    .presentacion {
+      background: var(--blanco);
+    }
+
+    .presentacion-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 44px;
+      align-items: stretch;
+    }
+
+    .texto-presentacion {
+      padding-right: 15px;
+    }
+
+    .texto-presentacion p {
+      color: var(--gris-texto);
+      font-size: 1.02rem;
+    }
+
+    .texto-presentacion p:first-of-type {
+      margin-top: 0;
+    }
+
+    .principios {
+      display: grid;
+      gap: 13px;
+      margin-top: 26px;
+    }
+
+    .principio {
+      display: grid;
+      grid-template-columns: 45px 1fr;
+      align-items: center;
+      gap: 13px;
+      padding: 15px;
+      border: 1px solid var(--gris-suave);
+      border-radius: 12px;
+      background: #fbfcfd;
+    }
+
+    .principio-icono {
+      display: grid;
+      place-items: center;
+      width: 43px;
+      height: 43px;
+      color: var(--verde);
       border-radius: 10px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease;
+      background: var(--verde-claro);
+      font-size: 1.18rem;
+      font-weight: 800;
+    }
+
+    .principio h3 {
+      margin: 0 0 2px;
+      color: var(--azul-oscuro);
+      font-size: 0.97rem;
+    }
+
+    .principio p {
+      margin: 0;
+      color: var(--gris-texto);
+      font-size: 0.86rem;
+    }
+
+    .bloque-cifras {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 26px;
+      border-radius: var(--radio);
+      color: white;
+      background:
+        linear-gradient(145deg, rgba(20, 60, 81, 0.96), rgba(41, 106, 79, 0.92)),
+        var(--verde);
+      box-shadow: var(--sombra);
+    }
+
+    .cifra {
+      min-height: 150px;
       display: flex;
       flex-direction: column;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-
-    .card-content {
+      justify-content: center;
       padding: 15px;
-      flex-grow: 1;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.06);
     }
 
-    .card-title {
-      font-size: 1.1em;
-      margin-bottom: 10px;
-      color: #2c3e50;
+    .cifra strong {
+      display: block;
+      color: #d8f2dd;
+      font-size: 2rem;
+      line-height: 1;
     }
 
-    .card-description {
-      font-size: 0.95em;
-      color: #555;
+    .cifra span {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 0.87rem;
+      line-height: 1.35;
     }
 
-    .card-link {
-      text-align: center;
-      margin: 10px 0 15px;
+    /* =========================================================
+       SERVICIOS
+    ========================================================= */
+    .servicios {
+      background: #eef3f5;
     }
 
-    .card-link a {
-      display: inline-block;
-      padding: 8px 16px;
-      background-color: #2980b9;
+    .grid-servicios {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .servicio {
+      min-height: 215px;
+      padding: 25px;
+      border: 1px solid rgba(22, 50, 79, 0.08);
+      border-radius: 15px;
+      background: white;
+      box-shadow: var(--sombra-suave);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .servicio:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--sombra);
+    }
+
+    .servicio-icono {
+      display: grid;
+      place-items: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: 17px;
+      color: var(--azul-medio);
+      border-radius: 12px;
+      background: var(--azul-claro);
+      font-size: 1.22rem;
+      font-weight: 800;
+    }
+
+    .servicio h3 {
+      margin: 0 0 9px;
+      color: var(--azul-oscuro);
+      font-size: 1.05rem;
+    }
+
+    .servicio p {
+      margin: 0;
+      color: var(--gris-texto);
+      font-size: 0.91rem;
+    }
+
+    /* =========================================================
+       FILTROS Y PORTAFOLIO
+    ========================================================= */
+    .portafolio {
+      background: white;
+    }
+
+    .filtros {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 0 0 28px;
+    }
+
+    .filtro {
+      cursor: pointer;
+      padding: 9px 15px;
+      border: 1px solid #cdd8df;
+      border-radius: 30px;
+      color: #53626e;
+      background: white;
+      font-family: inherit;
+      font-size: 0.88rem;
+      font-weight: 700;
+      transition: all 0.22s ease;
+    }
+
+    .filtro:hover,
+    .filtro.activo {
+      border-color: var(--azul-medio);
       color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      transition: background-color 0.3s;
+      background: var(--azul-medio);
     }
 
-    .card-link a:hover {
-      background-color: #1c5980;
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5em;
+    .tarjeta {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 430px;
+      border: 1px solid #e0e8ed;
+      border-radius: 16px;
+      background: white;
+      box-shadow: 0 8px 20px rgba(22, 50, 79, 0.07);
+      transition: transform 0.26s ease, box-shadow 0.26s ease;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--sombra);
+    }
+
+    .tarjeta.oculta {
+      display: none;
+    }
+
+    .tarjeta-media {
+      position: relative;
+      overflow: hidden;
+      height: 190px;
+      background:
+        linear-gradient(135deg, rgba(24, 73, 109, 0.88), rgba(44, 113, 81, 0.82));
+    }
+
+    .tarjeta-media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+      background-size: 28px 28px;
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    .tarjeta-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      transition: transform 0.4s ease;
+    }
+
+    .tarjeta:hover .tarjeta-media img {
+      transform: scale(1.05);
+    }
+
+    .tarjeta-etiqueta {
+      position: absolute;
+      z-index: 3;
+      top: 14px;
+      left: 14px;
+      padding: 6px 10px;
+      border-radius: 20px;
+      color: white;
+      background: rgba(16, 38, 60, 0.78);
+      backdrop-filter: blur(6px);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+
+    .tarjeta-fondo-documento {
+      display: grid;
+      place-items: center;
+      height: 100%;
+      position: relative;
+      z-index: 2;
+      color: white;
+      font-size: 3.4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+    }
+
+    .fondo-documento-verde {
+      background: linear-gradient(135deg, #265642, #4c8a66);
+    }
+
+    .fondo-documento-azul {
+      background: linear-gradient(135deg, #1b4166, #397da7);
+    }
+
+    .fondo-documento-arena {
+      background: linear-gradient(135deg, #745f3d, #ae9361);
+    }
+
+    .fondo-documento-morado {
+      background: linear-gradient(135deg, #4d426d, #8073a8);
+    }
+
+    .fondo-documento-rojo {
+      background: linear-gradient(135deg, #743e3e, #b16855);
+    }
+
+    .tarjeta-contenido {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    .tarjeta-categoria {
+      margin: 0 0 7px;
+      color: var(--verde);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+    }
+
+    .tarjeta h3 {
+      margin: 0 0 10px;
+      color: var(--azul-oscuro);
+      font-size: 1.08rem;
+      line-height: 1.35;
+    }
+
+    .tarjeta p {
+      margin: 0;
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+
+    .tarjeta-acciones {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 20px;
+    }
+
+    .enlace-tarjeta {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--azul-medio);
+      font-size: 0.88rem;
+      font-weight: 800;
+      transition: color 0.2s ease;
+    }
+
+    .enlace-tarjeta:hover {
+      color: var(--verde);
+    }
+
+    .flecha {
+      font-size: 1.05rem;
+      transition: transform 0.2s ease;
+    }
+
+    .enlace-tarjeta:hover .flecha {
+      transform: translateX(4px);
+    }
+
+    .estado {
+      padding: 5px 9px;
+      border-radius: 20px;
+      color: #486473;
+      background: #edf3f6;
+      font-size: 0.7rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* =========================================================
+       EQUIPO
+    ========================================================= */
+    .equipo {
+      background: #eef3f5;
+    }
+
+    .grid-equipo {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .miembro {
+      overflow: hidden;
+      border: 1px solid rgba(22, 50, 79, 0.08);
+      border-radius: 16px;
+      background: white;
+      box-shadow: var(--sombra-suave);
+    }
+
+    .miembro-cabecera {
+      min-height: 115px;
+      padding: 24px;
+      color: white;
+      background:
+        radial-gradient(circle at right top, rgba(140, 215, 164, 0.35), transparent 30%),
+        linear-gradient(135deg, var(--azul-oscuro), #2d6f65);
+    }
+
+    .miembro-iniciales {
+      display: grid;
+      place-items: center;
+      width: 58px;
+      height: 58px;
+      border: 2px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.13);
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+    }
+
+    .miembro-contenido {
+      padding: 23px;
+    }
+
+    .miembro h3 {
+      margin: 0;
+      color: var(--azul-oscuro);
+      font-size: 1.1rem;
+      line-height: 1.35;
+    }
+
+    .miembro-grado {
+      margin: 7px 0 13px;
+      color: var(--verde);
+      font-size: 0.84rem;
+      font-weight: 800;
+    }
+
+    .miembro p {
+      margin: 0;
+      color: var(--gris-texto);
+      font-size: 0.9rem;
+    }
+
+    .miembro-etiquetas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 17px;
+    }
+
+    .miembro-etiquetas span {
+      padding: 5px 9px;
+      border-radius: 20px;
+      color: #456371;
+      background: #edf3f6;
+      font-size: 0.72rem;
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       CONTACTO Y PIE
+    ========================================================= */
+    .contacto {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 82% 10%, rgba(126, 202, 152, 0.3), transparent 25%),
+        linear-gradient(135deg, #10263c, #194b5f);
+    }
+
+    .contacto-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contacto h2 {
+      margin: 0 0 12px;
+      font-size: clamp(1.9rem, 3vw, 2.8rem);
+      line-height: 1.17;
+    }
+
+    .contacto p {
+      max-width: 700px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 1rem;
+    }
+
+    .tarjeta-contacto {
+      padding: 25px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+    }
+
+    .tarjeta-contacto h3 {
+      margin: 0 0 10px;
+      color: #d8f2dd;
+      font-size: 1.05rem;
+    }
+
+    .tarjeta-contacto p {
+      font-size: 0.9rem;
+    }
+
+    .pie {
+      padding: 26px 0;
+      color: #60717b;
+      background: #f8fafb;
+      font-size: 0.84rem;
+    }
+
+    .pie-contenido {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      align-items: center;
+    }
+
+    .pie p {
+      margin: 0;
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+    @media (max-width: 980px) {
+      .menu {
+        gap: 14px;
+        font-size: 0.84rem;
+      }
+
+      .portada-grid,
+      .presentacion-grid,
+      .contacto-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .panel-portada {
+        max-width: 680px;
+      }
+
+      .grid-servicios {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .grid-equipo {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .barra-superior .contenedor,
+      .navegacion,
+      .encabezado-seccion,
+      .pie-contenido {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .barra-superior .contenedor {
+        gap: 3px;
+      }
+
+      .navegacion {
+        padding: 15px 0;
+        gap: 14px;
+      }
+
+      .menu {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 11px 16px;
+      }
+
+      .marca {
+        min-width: unset;
+      }
+
+      .portada {
+        padding: 62px 0;
+      }
+
+      .portada h1 {
+        font-size: 2.5rem;
+      }
+
+      section {
+        padding: 58px 0;
+      }
+
+      .grid-servicios,
+      .bloque-cifras {
+        grid-template-columns: 1fr;
+      }
+
+      .galeria {
+        grid-template-columns: 1fr;
+      }
+
+      .nota-seccion {
+        max-width: none;
+      }
+
+      .tarjeta {
+        min-height: 390px;
       }
     }
   </style>
 </head>
+
 <body>
-  <header>
-    <h1>Catálogo de Mapas</h1>
-    <p>Geovanni Fidel Aguilar Orea <br> Licenciado en Geografía  y  <br>Maestro en Ciencias en Agroecosistemas Tropicales <br> 03/05/2025</p>
-  </header>
 
-  <div class="gallery">
-    <!-- Mapa 1 -->
-    <div class="card">
-      <img src="USCV.png" alt="Mapa 1">
-      <div class="card-content">
-        <div class="card-title">Mapa 1: Uso de Suelo</div>
-        <div class="card-description">Coberturas para los años 2019 y 2023 en la Región Norte de Yucatán.</div>
-      </div>
-      <div class="card-link">
-        <a href="https://chestudiosterritoriales.users.earthengine.app/view/demo2" target="_blank">Ver</a>
-      </div>
-    </div>
-
-
-
-    <!-- Mapa 3 -->
-    <div class="card">
-      <img src="DEFORESTACION.png" alt="Mapa 2">
-      <div class="card-content">
-        <div class="card-title">Mapa 2: Deforestación</div>
-        <div class="card-description"> Pérdidas de cobertura forestal en México para el periodo 2001-2023</div>
-      </div>
-      <div class="card-link">
-        <a href="https://chestudiosterritoriales.users.earthengine.app/view/demo3" target="_blank">Ver</a>
-      </div>
-    </div>
-
-    <!-- Mapa 4 -->
-    <div class="card">
-      <img src="CUS.png" alt="Mapa 3">
-      <div class="card-content">
-        <div class="card-title">Mapa 3: Cambio de Cobertura</div>
-        <div class="card-description">Análisis multitemporal 2017-2021.</div>
-      </div>
-      <div class="card-link">
-        <a href="https://gaguilar.users.earthengine.app/view/dynamicworldpy" target="_blank">Ver</a>
-      </div>
-    </div>
-
-    <!-- Mapa 5 -->
-    <div class="card">
-      <img src="AES.png" alt="Mapa 4">
-      <div class="card-content">
-        <div class="card-title">Mapa 4: Monitoreo de Agroecosistemas</div>
-        <div class="card-description">Uso de imágenes de radar para detectar agroecosistemas del trópico húmedo</div>
-      </div>
-      <div class="card-link">
-        <a href="https://chestudiosterritoriales.users.earthengine.app/view/demo4" target="_blank">Ver</a>
-      </div>
-    </div>
-
-    <!-- Mapa 6 -->
-    <div class="card">
-      <img src="PR.png" alt="Mapa 5">
-      <div class="card-content">
-        <div class="card-title">Mapa 5: Percepción remota y fotointerpretación</div>
-        <div class="card-description"> Cartografía base, cartografía temática</div>
-      </div>
-      <div class="card-link">
-        <a href="https://gaguilar.users.earthengine.app/view/pyanp" target="_blank">Ver</a>
-      </div>
-    </div>
-
-    <!-- Mapa 7 -->
-    <div class="card">
-      <img src="EXPLORADORS2.png" alt="Mapa 6">
-      <div class="card-content">
-        <div class="card-title">Mapa 6: Explorador de imágenes Sentinel-2</div>
-        <div class="card-description"> Monitoreo de series de tiempo</div>
-      </div>
-      <div class="card-link">
-        <a href="https://gaguilar.users.earthengine.app/view/guis2" target="_blank">Ver </a>
-      </div>
-    </div>
-
-    <!-- Mapa 8 -->
-    <div class="card">
-      <img src="CONECTIVIDAD.png" alt="Mapa 7">
-      <div class="card-content">
-        <div class="card-title">Mapa 7: Conectividad Funcional del Paisaje</div>
-        <div class="card-description">Corredores de menor costo energético para el movimiento del Jaguar (P.onca)</div>
-      </div>
-      <div class="card-link">
-        <a href="https://gaguilar.users.earthengine.app/view/nbrpy" target="_blank">Ver</a>
-      </div>
-    </div>
-
-    <!-- Mapa 9 -->
-    <div class="card">
-      <img src="ESPECIES.png" alt="Mapa 8">
-      <div class="card-content">
-        <div class="card-title">Mapa 8: Distribución de especies</div>
-        <div class="card-description">Densidad de población de Eretmochelys imbricata en zonas costeras.</div>
-      </div>
-      <div class="card-link">
-        <a href="https://gaguilar.users.earthengine.app/view/anidacionelcuyo" target="_blank">Ver</a>
-      </div>
-    </div>
-
-    <!-- Mapa 10 -->
-    <div class="card">
-      <img src="IMAGENES.png" alt="Mapa 9">
-      <div class="card-content">
-        <div class="card-title">Mapa 9: Visualización y descarga de imágenes Sentinel-2, Landsat y MODIS.</div>
-        <div class="card-description"> Monitoreo forestal</div>
-      </div>
-      <div class="card-link">
-        <a href="https://gaguilar.users.earthengine.app/view/p121#lon=-88.57635349584763;lat=19.63310949437434;zoom=8;" target="_blank">Ver</a>
-      </div>
-    </div>
-
-        <!-- Mapa 11 -->
-    <div class="card">
-      <img src="portada_diseño.png" alt="Mapa 9">
-      <div class="card-content">
-        <div class="card-title">Mapa 10: Diseño de Agroecosistemas con LIDAR.</div>
-        <div class="card-description"> Agroecología</div>
-      </div>
-      <div class="card-link">
-        <a href="https://chestudiosterritoriales.users.earthengine.app/view/demo5" target="_blank">Ver</a>
-      </div>
+  <!-- =======================================================
+       BARRA SUPERIOR
+  ======================================================== -->
+  <div class="barra-superior">
+    <div class="contenedor">
+      <p>Centro Holístico de Estudios Territoriales · CHET</p>
+      <p>Investigación aplicada · Geomática · Planeación territorial</p>
     </div>
   </div>
 
+  <!-- =======================================================
+       NAVEGACIÓN
+  ======================================================== -->
+  <header class="encabezado">
+    <div class="contenedor navegacion">
+
+      <a href="#inicio" class="marca" aria-label="Ir al inicio">
+        <div class="marca-simbolo">CH</div>
+        <div class="marca-texto">
+          <strong>Centro Holístico de<br>Estudios Territoriales</strong>
+          <span>CHET</span>
+        </div>
+      </a>
+
+      <nav class="menu" aria-label="Navegación principal">
+        <a href="#nosotros">Nosotros</a>
+        <a href="#servicios">Líneas de trabajo</a>
+        <a href="#portafolio">Portafolio</a>
+        <a href="#equipo">Equipo</a>
+        <a class="boton-menu" href="#contacto">Contacto</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- =======================================================
+       PORTADA
+  ======================================================== -->
+  <main>
+
+    <section class="portada" id="inicio">
+      <div class="contenedor portada-grid">
+
+        <div>
+          <div class="etiqueta">Territorio, información y soluciones</div>
+
+          <h1>
+            Conocimiento territorial para
+            <span>decisiones sostenibles.</span>
+          </h1>
+
+          <p>
+            En el Centro Holístico de Estudios Territoriales articulamos análisis geoespacial,
+            cartografía, percepción remota, gestión socioambiental y comunicación territorial
+            para comprender procesos complejos y construir soluciones aplicables.
+          </p>
+
+          <div class="acciones-portada">
+            <a class="boton boton-primario" href="#portafolio">
+              Explorar portafolio <span>↓</span>
+            </a>
+
+            <a class="boton boton-secundario" href="#nosotros">
+              Conocer al Centro
+            </a>
+          </div>
+        </div>
+
+        <aside class="panel-portada">
+          <h2>Áreas de especialización</h2>
+
+          <ul class="lista-portada">
+            <li>
+              <b>01</b>
+              <span>Cartografía temática, bases de datos geoespaciales y sistemas de información geográfica.</span>
+            </li>
+            <li>
+              <b>02</b>
+              <span>Percepción remota, análisis multitemporal y monitoreo con sensores ópticos y radar.</span>
+            </li>
+            <li>
+              <b>03</b>
+              <span>Planeación territorial, conectividad ecológica, conservación y gestión socioambiental.</span>
+            </li>
+            <li>
+              <b>04</b>
+              <span>Visores web, tableros territoriales y comunicación de resultados para la toma de decisiones.</span>
+            </li>
+          </ul>
+        </aside>
+
+      </div>
+    </section>
+
+    <!-- =====================================================
+         NOSOTROS
+    ====================================================== -->
+    <section class="presentacion" id="nosotros">
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+          <div class="titulo-seccion">
+            <p class="subtitulo">Quiénes somos</p>
+            <h2>Un enfoque integral para analizar y gestionar el territorio.</h2>
+          </div>
+
+          <div class="nota-seccion">
+            Integramos herramientas técnicas, conocimiento territorial y comunicación clara para convertir datos complejos en productos útiles.
+          </div>
+        </div>
+
+        <div class="presentacion-grid">
+
+          <div class="texto-presentacion">
+            <p>
+              El <strong>Centro Holístico de Estudios Territoriales (CHET)</strong> es un espacio de
+              colaboración orientado al análisis aplicado de los territorios y sus dinámicas ambientales,
+              sociales y productivas.
+            </p>
+
+            <p>
+              Nuestro trabajo busca fortalecer procesos de planeación, conservación, monitoreo,
+              restauración, ordenamiento ecológico y gestión territorial mediante productos
+              cartográficos, análisis geoespaciales, plataformas interactivas e insumos técnicos
+              accesibles para instituciones, organizaciones, comunidades y proyectos de investigación.
+            </p>
+
+            <div class="principios">
+
+              <article class="principio">
+                <div class="principio-icono">◈</div>
+                <div>
+                  <h3>Rigor técnico</h3>
+                  <p>Metodologías reproducibles, trazabilidad de datos y resultados espacialmente verificables.</p>
+                </div>
+              </article>
+
+              <article class="principio">
+                <div class="principio-icono">◌</div>
+                <div>
+                  <h3>Visión territorial</h3>
+                  <p>Comprensión de los vínculos entre paisaje, biodiversidad, actividades humanas y gobernanza.</p>
+                </div>
+              </article>
+
+              <article class="principio">
+                <div class="principio-icono">↗</div>
+                <div>
+                  <h3>Aplicación práctica</h3>
+                  <p>Productos diseñados para apoyar procesos reales de decisión, monitoreo y comunicación.</p>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="bloque-cifras">
+            <div class="cifra">
+              <strong>SIG</strong>
+              <span>Integración, depuración y análisis de información geoespacial.</span>
+            </div>
+
+            <div class="cifra">
+              <strong>SAR</strong>
+              <span>Monitoreo territorial con imágenes Sentinel-1 y otras fuentes de radar.</span>
+            </div>
+
+            <div class="cifra">
+              <strong>MSI</strong>
+              <span>Análisis óptico multitemporal con Sentinel-2, Landsat y datos complementarios.</span>
+            </div>
+
+            <div class="cifra">
+              <strong>WEB</strong>
+              <span>Visores, mapas interactivos y productos de comunicación territorial.</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         SERVICIOS
+    ====================================================== -->
+    <section class="servicios" id="servicios">
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+          <div class="titulo-seccion">
+            <p class="subtitulo">Líneas de trabajo</p>
+            <h2>Servicios técnicos para comprender, monitorear y comunicar el territorio.</h2>
+            <p>
+              Las líneas de trabajo pueden articularse en proyectos integrales o desarrollarse como productos específicos.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-servicios">
+
+          <article class="servicio">
+            <div class="servicio-icono">⌖</div>
+            <h3>Geomática y SIG</h3>
+            <p>
+              Integración de bases geoespaciales, diseño de geodatabases, homologación cartográfica,
+              análisis espacial y elaboración de mapas técnicos.
+            </p>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio-icono">◫</div>
+            <h3>Percepción remota</h3>
+            <p>
+              Procesamiento de imágenes Sentinel, Landsat, drones y modelos de elevación para
+              monitoreo ambiental, agroecosistemas y cambios de cobertura.
+            </p>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio-icono">⌁</div>
+            <h3>Conectividad ecológica</h3>
+            <p>
+              Modelado de resistencia, corredores funcionales, priorización espacial y análisis del
+              paisaje para conservación y restauración.
+            </p>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio-icono">▦</div>
+            <h3>Planeación territorial</h3>
+            <p>
+              Apoyo técnico para ordenamiento ecológico, programas de manejo, subzonificación,
+              diagnósticos territoriales y evaluación multicriterio.
+            </p>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio-icono">◉</div>
+            <h3>Monitoreo socioambiental</h3>
+            <p>
+              Indicadores espaciales y temporales para seguimiento de deforestación, incendios,
+              biodiversidad, agua, ecosistemas costeros y sistemas productivos.
+            </p>
+          </article>
+
+          <article class="servicio">
+            <div class="servicio-icono">↗</div>
+            <h3>Visores y comunicación</h3>
+            <p>
+              Desarrollo de visores web, tableros, StoryMaps y productos cartográficos para facilitar
+              la consulta, interpretación y divulgación de información territorial.
+            </p>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         PORTAFOLIO
+    ====================================================== -->
+    <section class="portafolio" id="portafolio">
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+          <div class="titulo-seccion">
+            <p class="subtitulo">Portafolio</p>
+            <h2>Visores, productos cartográficos y recursos territoriales.</h2>
+            <p>
+              Selección de aplicaciones interactivas, ejercicios de análisis geoespacial y documentos técnicos de referencia.
+            </p>
+          </div>
+
+          <div class="nota-seccion">
+            Los documentos y plataformas externas se identifican como recursos de consulta. Sus derechos pertenecen a sus autores e instituciones responsables.
+          </div>
+        </div>
+
+        <div class="filtros" aria-label="Filtrar portafolio">
+          <button class="filtro activo" type="button" data-filter="todos">Todos</button>
+          <button class="filtro" type="button" data-filter="visor">Visores CHET</button>
+          <button class="filtro" type="button" data-filter="cartografia">Cartografía y análisis</button>
+          <button class="filtro" type="button" data-filter="documento">Documentos técnicos</button>
+          <button class="filtro" type="button" data-filter="externo">Plataformas externas</button>
+        </div>
+
+        <div class="galeria">
+
+          <!-- ===================== VISOR 1 ===================== -->
+          <article class="tarjeta" data-category="visor">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Visor CHET</span>
+              <img src="USCV.png" alt="Vista previa de visor de uso de suelo y cobertura vegetal"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Cobertura y uso del suelo</p>
+              <h3>Uso de suelo y coberturas territoriales</h3>
+              <p>
+                Visualización de coberturas para los años 2019 y 2023 en la Región Norte de Yucatán,
+                orientada al análisis comparativo de cambios territoriales.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo1#lon=-89.63653415991011;lat=18.476576959179422;zoom=9;"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 2 ===================== -->
+          <article class="tarjeta" data-category="visor cartografia">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Visor CHET</span>
+              <img src="DEFORESTACION.png" alt="Vista previa de visor de deforestación"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Monitoreo forestal</p>
+              <h3>Deforestación y pérdida de cobertura forestal</h3>
+              <p>
+                Consulta de pérdidas de cobertura forestal en México para el periodo 2001–2023,
+                útil para identificar patrones de cambio y áreas de atención.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo3"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 3 ===================== -->
+          <article class="tarjeta" data-category="visor cartografia">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Visor CHET</span>
+              <img src="CUS.png" alt="Vista previa de análisis de cambio de cobertura"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Cambio de cobertura</p>
+              <h3>Análisis multitemporal de coberturas</h3>
+              <p>
+                Herramienta para explorar cambios de cobertura entre 2017 y 2021 mediante análisis
+                geoespacial y visualización temática.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://gaguilar.users.earthengine.app/view/dynamicworldpy"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 4 ===================== -->
+          <article class="tarjeta" data-category="visor">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Visor CHET</span>
+              <img src="AES.png" alt="Vista previa de monitoreo de agroecosistemas"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Agroecosistemas y radar</p>
+              <h3>Monitoreo de agroecosistemas tropicales</h3>
+              <p>
+                Aplicación de imágenes de radar para explorar patrones territoriales y apoyar el
+                monitoreo de agroecosistemas del trópico húmedo.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo4"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 5 ===================== -->
+          <article class="tarjeta" data-category="visor cartografia">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Cartografía</span>
+              <img src="PR.png" alt="Vista previa de cartografía temática"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Fotointerpretación</p>
+              <h3>Percepción remota y cartografía temática</h3>
+              <p>
+                Consulta de productos de cartografía base y temática derivados de interpretación
+                visual, análisis espacial e integración de información territorial.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://gaguilar.users.earthengine.app/view/pyanp"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 6 ===================== -->
+          <article class="tarjeta" data-category="visor">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Sentinel-2</span>
+              <img src="EXPLORADORS2.png" alt="Vista previa de explorador Sentinel-2"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Series de tiempo</p>
+              <h3>Explorador de imágenes Sentinel-2</h3>
+              <p>
+                Plataforma para la consulta y visualización de imágenes Sentinel-2, composiciones
+                espectrales y series de tiempo.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://gaguilar.users.earthengine.app/view/guis2"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 7 ===================== -->
+          <article class="tarjeta" data-category="visor cartografia">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Conectividad</span>
+              <img src="CONECTIVIDAD.png" alt="Vista previa de conectividad funcional del paisaje"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Conservación y paisaje</p>
+              <h3>Conectividad funcional del paisaje</h3>
+              <p>
+                Análisis de corredores de menor costo energético para el movimiento de especies,
+                aplicado al estudio de conectividad del jaguar (<em>Panthera onca</em>).
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://gaguilar.users.earthengine.app/view/nbrpy"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 8 ===================== -->
+          <article class="tarjeta" data-category="visor">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Biodiversidad</span>
+              <img src="ESPECIES.png" alt="Vista previa de distribución de especies"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Distribución de especies</p>
+              <h3>Patrones espaciales de fauna marina</h3>
+              <p>
+                Visualización de densidad de población de <em>Eretmochelys imbricata</em> en zonas
+                costeras y apoyo a la interpretación de áreas de importancia ecológica.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://gaguilar.users.earthengine.app/view/anidacionelcuyo"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 9 ===================== -->
+          <article class="tarjeta" data-category="visor">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Imágenes satelitales</span>
+              <img src="IMAGENES.png" alt="Vista previa de visualización de imágenes satelitales"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Monitoreo forestal</p>
+              <h3>Visualización y descarga de imágenes</h3>
+              <p>
+                Herramienta para explorar imágenes Sentinel-2, Landsat y MODIS con fines de
+                monitoreo forestal y análisis territorial.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://gaguilar.users.earthengine.app/view/p121#lon=-88.57635349584763;lat=19.63310949437434;zoom=8;"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== VISOR 10 ===================== -->
+          <article class="tarjeta" data-category="visor">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Agroecología</span>
+              <img src="portada_diseño.png" alt="Vista previa de diseño de agroecosistemas con LiDAR"
+                   onerror="this.style.display='none'">
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Diseño de agroecosistemas</p>
+              <h3>Diseño de agroecosistemas con LiDAR</h3>
+              <p>
+                Visualización territorial orientada al uso de información topográfica y análisis
+                espacial para el diseño de estrategias agroecológicas.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo5"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir visor <span class="flecha">→</span>
+                </a>
+                <span class="estado">Interactivo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== DOCUMENTO 1 ===================== -->
+          <article class="tarjeta" data-category="documento">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Documento técnico</span>
+              <div class="tarjeta-fondo-documento fondo-documento-verde">PDF</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Referencia externa</p>
+              <h3>Informe de la Reserva Arrecifal Los Tuxtlas</h3>
+              <p>
+                Documento de consulta sobre procesos ambientales y territoriales vinculados con la
+                región de Los Tuxtlas y su zona costera.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://cemda.org.mx/wp-content/uploads/2017/01/Informe-Reserva-Arrecifal-Los-Tuxtlas-finall-1-1.pdf"
+                   target="_blank" rel="noopener noreferrer">
+                  Consultar documento <span class="flecha">→</span>
+                </a>
+                <span class="estado">PDF</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== DOCUMENTO 2 ===================== -->
+          <article class="tarjeta" data-category="documento">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Documento técnico</span>
+              <div class="tarjeta-fondo-documento fondo-documento-azul">POET</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Planeación territorial</p>
+              <h3>Caracterización del POERC Xalapa</h3>
+              <p>
+                Documento técnico de referencia para la caracterización territorial del Programa de
+                Ordenamiento Ecológico Regional de Xalapa.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://repositorio.veracruz.gob.mx/medioambiente/wp-content/uploads/sites/9/2022/11/Etapa_de_caracterizaci%C3%B3n_del_POERCX.pdf"
+                   target="_blank" rel="noopener noreferrer">
+                  Consultar documento <span class="flecha">→</span>
+                </a>
+                <span class="estado">PDF</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== DOCUMENTO 3 ===================== -->
+          <article class="tarjeta" data-category="documento">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Documento técnico</span>
+              <div class="tarjeta-fondo-documento fondo-documento-arena">EPJ</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Conectividad y paisaje</p>
+              <h3>Corredor Balam-Béh</h3>
+              <p>
+                Estudio técnico de referencia sobre el corredor Balam-Béh, útil para el análisis de
+                conectividad, conservación y planeación territorial en Campeche.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://www.semabicce.campeche.gob.mx/wp-content/uploads/2024/11/EPJ_Corredor-Balam-Beh_PPY_27112024_VF.pdf"
+                   target="_blank" rel="noopener noreferrer">
+                  Consultar documento <span class="flecha">→</span>
+                </a>
+                <span class="estado">PDF</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== DOCUMENTO 4 ===================== -->
+          <article class="tarjeta" data-category="documento">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Documento técnico</span>
+              <div class="tarjeta-fondo-documento fondo-documento-morado">MIA</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Evaluación ambiental</p>
+              <h3>Manifestación de Impacto Ambiental: Chicxulub</h3>
+              <p>
+                Documento de consulta relacionado con un proyecto de parque ecológico en Chicxulub
+                y sus componentes ambientales y territoriales.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://articulacionyucatan.wordpress.com/wp-content/uploads/2018/08/proyecto-parque-ec3b3lico-chicxulub.pdf"
+                   target="_blank" rel="noopener noreferrer">
+                  Consultar documento <span class="flecha">→</span>
+                </a>
+                <span class="estado">PDF</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== EXTERNO 1 ===================== -->
+          <article class="tarjeta" data-category="externo">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <div class="tarjeta-fondo-documento fondo-documento-azul">EC</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">StoryMap</p>
+              <h3>Ecosistemas costeros</h3>
+              <p>
+                Recurso interactivo de consulta para explorar información territorial y ambiental
+                asociada con ecosistemas costeros.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://storymaps.arcgis.com/stories/3ec57e03042842d9af99c57b7e8f4dc7"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir plataforma <span class="flecha">→</span>
+                </a>
+                <span class="estado">Externo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== EXTERNO 2 ===================== -->
+          <article class="tarjeta" data-category="externo">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <div class="tarjeta-fondo-documento fondo-documento-verde">MAN</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Visor temático</p>
+              <h3>Información territorial sobre manatí</h3>
+              <p>
+                Visor de consulta externa con información espacial relacionada con el manatí y su
+                contexto territorial.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://wkkf.maps.arcgis.com/apps/mapviewer/index.html?webmap=9c906141a9f3463e88562ec73855edf7"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir plataforma <span class="flecha">→</span>
+                </a>
+                <span class="estado">Externo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== EXTERNO 3 ===================== -->
+          <article class="tarjeta" data-category="externo">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <div class="tarjeta-fondo-documento fondo-documento-morado">REC</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Visor temático</p>
+              <h3>RECIMY</h3>
+              <p>
+                Plataforma externa de consulta territorial incorporada como referencia para el
+                análisis y comunicación de información geoespacial.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://wkkf.maps.arcgis.com/apps/mapviewer/index.html?webmap=f4216d1d65bd491ab2fac7e0894c6b58"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir plataforma <span class="flecha">→</span>
+                </a>
+                <span class="estado">Externo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== EXTERNO 4 ===================== -->
+          <article class="tarjeta" data-category="externo">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <div class="tarjeta-fondo-documento fondo-documento-rojo">FUE</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Dashboard</p>
+              <h3>Monitoreo de incendios</h3>
+              <p>
+                Tablero territorial de consulta externa para el seguimiento y visualización de
+                información relacionada con incendios.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://wkkf.maps.arcgis.com/apps/dashboards/b2f6d65637e944c3b3f1b98a054b8eaa"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir plataforma <span class="flecha">→</span>
+                </a>
+                <span class="estado">Externo</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- ===================== EXTERNO 5 ===================== -->
+          <article class="tarjeta" data-category="externo">
+            <div class="tarjeta-media">
+              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <div class="tarjeta-fondo-documento fondo-documento-arena">AT</div>
+            </div>
+
+            <div class="tarjeta-contenido">
+              <p class="tarjeta-categoria">Atlas territorial</p>
+              <h3>Atlas interactivo</h3>
+              <p>
+                Plataforma externa de consulta cartográfica para explorar información temática y
+                territorial mediante un atlas interactivo.
+              </p>
+
+              <div class="tarjeta-acciones">
+                <a class="enlace-tarjeta"
+                   href="https://wkkf.maps.arcgis.com/apps/instant/atlas/index.html?appid=e6bed9bb0e45453f94f351b0a29aef36&webmap=b52a2d999f184e7a90c77a3762d3ff3f"
+                   target="_blank" rel="noopener noreferrer">
+                  Abrir plataforma <span class="flecha">→</span>
+                </a>
+                <span class="estado">Externo</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         EQUIPO
+    ====================================================== -->
+    <section class="equipo" id="equipo">
+      <div class="contenedor">
+
+        <div class="encabezado-seccion">
+          <div class="titulo-seccion">
+            <p class="subtitulo">Equipo</p>
+            <h2>Especialistas que articulan análisis territorial, conocimiento técnico y aplicación práctica.</h2>
+            <p>
+              El trabajo del Centro se fortalece mediante una visión interdisciplinaria y colaborativa.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-equipo">
+
+          <article class="miembro">
+            <div class="miembro-cabecera">
+              <div class="miembro-iniciales">GFAO</div>
+            </div>
+
+            <div class="miembro-contenido">
+              <h3>M.C. Geovanni Fidel Aguilar Orea</h3>
+              <p class="miembro-grado">Licenciado en Geografía · Maestro en Ciencias en Agroecosistemas Tropicales</p>
+
+              <p>
+                Especialista en sistemas de información geográfica, percepción remota, análisis espacial,
+                monitoreo territorial, cartografía aplicada y desarrollo de visores geoespaciales.
+              </p>
+
+              <div class="miembro-etiquetas">
+                <span>Geomática</span>
+                <span>Teledetección</span>
+                <span>SIG</span>
+                <span>Conectividad</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="miembro">
+            <div class="miembro-cabecera">
+              <div class="miembro-iniciales">FTD</div>
+            </div>
+
+            <div class="miembro-contenido">
+              <h3>M.C. Fabiola Torres Duque</h3>
+              <p class="miembro-grado">Maestra en Ciencias</p>
+
+              <p>
+                Integrante del Centro con participación en procesos de análisis territorial,
+                gestión socioambiental, integración de información y fortalecimiento de proyectos interdisciplinarios.
+              </p>
+
+              <div class="miembro-etiquetas">
+                <span>Análisis territorial</span>
+                <span>Gestión ambiental</span>
+                <span>Proyectos</span>
+                <span>Colaboración</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="miembro">
+            <div class="miembro-cabecera">
+              <div class="miembro-iniciales">LAAO</div>
+            </div>
+
+            <div class="miembro-contenido">
+              <h3>Lic. Luis Ángel Aguilar Orea</h3>
+              <p class="miembro-grado">Licenciado</p>
+
+              <p>
+                Integrante del Centro con apoyo en la organización, gestión, integración y comunicación
+                de productos e información territorial.
+              </p>
+
+              <div class="miembro-etiquetas">
+                <span>Gestión de información</span>
+                <span>Apoyo técnico</span>
+                <span>Cartografía</span>
+                <span>Comunicación</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+         CONTACTO
+    ====================================================== -->
+    <section class="contacto" id="contacto">
+      <div class="contenedor contacto-grid">
+
+        <div>
+          <p class="subtitulo" style="color:#b9e5c5;">Colaboraciones y proyectos</p>
+
+          <h2>Construyamos herramientas útiles para comprender y gestionar el territorio.</h2>
+
+          <p>
+            CHET colabora en proyectos de investigación, conservación, planeación territorial,
+            monitoreo ambiental, producción cartográfica y desarrollo de plataformas geoespaciales.
+          </p>
+        </div>
+
+        <aside class="tarjeta-contacto">
+          <h3>Centro Holístico de Estudios Territoriales</h3>
+          <p>
+            Xalapa, Veracruz, México.<br>
+            Portafolio de visores, análisis y recursos territoriales.
+          </p>
+        </aside>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- =======================================================
+       PIE DE PÁGINA
+  ======================================================== -->
+  <footer class="pie">
+    <div class="contenedor pie-contenido">
+      <p>© <span id="anio"></span> Centro Holístico de Estudios Territoriales · CHET.</p>
+      <p>Información territorial para decisiones sostenibles.</p>
+    </div>
+  </footer>
+
+  <!-- =======================================================
+       FILTROS DEL PORTAFOLIO
+  ======================================================== -->
+  <script>
+    const botonesFiltro = document.querySelectorAll(".filtro");
+    const tarjetas = document.querySelectorAll(".tarjeta");
+
+    botonesFiltro.forEach((boton) => {
+      boton.addEventListener("click", () => {
+        const filtroSeleccionado = boton.dataset.filter;
+
+        botonesFiltro.forEach((item) => item.classList.remove("activo"));
+        boton.classList.add("activo");
+
+        tarjetas.forEach((tarjeta) => {
+          const categorias = tarjeta.dataset.category.split(" ");
+
+          if (
+            filtroSeleccionado === "todos" ||
+            categorias.includes(filtroSeleccionado)
+          ) {
+            tarjeta.classList.remove("oculta");
+          } else {
+            tarjeta.classList.add("oculta");
+          }
+        });
+      });
+    });
+
+    document.getElementById("anio").textContent = new Date().getFullYear();
+  </script>
 
 </body>
 </html>
