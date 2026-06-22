@@ -1,38 +1,32 @@
+
+
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CHET | Portafolio de Evidencias Territoriales</title>
+  <title>CHET | Portafolio de Evidencias</title>
 
   <meta
     name="description"
-    content="Portafolio de evidencias del Centro Holístico de Estudios Territoriales: visores geoespaciales, documentos técnicos y plataformas territoriales."
+    content="Portafolio de evidencias del Centro Holístico de Estudios Territoriales: visores, documentos técnicos y plataformas territoriales."
   >
 
   <style>
     :root {
-      --azul-oscuro: #112f46;
-      --azul-profundo: #091f31;
-      --azul-medio: #1e668f;
-      --azul-claro: #dcecf5;
-
-      --verde-oscuro: #255d45;
-      --verde: #3e7f59;
-      --verde-claro: #e2f0e7;
-
-      --gris-fondo: #f5f7f8;
-      --gris-linea: #dce4e8;
-      --gris-texto: #53616b;
+      --azul: #18384d;
+      --azul-claro: #eaf2f5;
+      --verde: #356d4d;
+      --verde-claro: #e7f1e9;
+      --gris-fondo: #f6f8f8;
+      --gris-linea: #d9e1e3;
+      --gris-texto: #52616a;
       --blanco: #ffffff;
-
-      --sombra: 0 16px 35px rgba(16, 48, 71, 0.13);
-      --sombra-suave: 0 8px 20px rgba(16, 48, 71, 0.08);
-
-      --radio-grande: 20px;
-      --radio-medio: 15px;
-      --ancho-maximo: 1240px;
+      --sombra: 0 10px 25px rgba(20, 50, 66, 0.10);
+      --ancho-maximo: 1180px;
+      --radio: 16px;
     }
 
     * {
@@ -45,7 +39,7 @@
 
     body {
       margin: 0;
-      color: #1f2d36;
+      color: #22313a;
       background: var(--gris-fondo);
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
@@ -71,89 +65,45 @@
     }
 
     /* =====================================================
-       BARRA SUPERIOR
-    ====================================================== */
-
-    .barra-superior {
-      color: rgba(255, 255, 255, 0.86);
-      background: var(--azul-profundo);
-      font-size: 0.82rem;
-    }
-
-    .barra-superior-contenido {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 36px;
-    }
-
-    .barra-superior p {
-      margin: 0;
-    }
-
-    /* =====================================================
-       ENCABEZADO Y NAVEGACIÓN
+       ENCABEZADO
     ====================================================== */
 
     .encabezado {
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(17, 47, 70, 0.1);
-      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--gris-linea);
+      background: rgba(255, 255, 255, 0.96);
       backdrop-filter: blur(10px);
     }
 
     .navegacion {
+      min-height: 78px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 28px;
-      min-height: 86px;
+      gap: 25px;
     }
 
     .marca {
       display: flex;
       align-items: center;
-      gap: 14px;
-      min-width: 310px;
     }
 
     .logo-navegacion {
-      width: 70px;
-      height: 62px;
+      width: 180px;
+      max-height: 58px;
       object-fit: contain;
-      flex-shrink: 0;
-    }
-
-    .marca-texto {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
-
-    .marca-texto strong {
-      color: var(--azul-oscuro);
-      font-size: 0.94rem;
-      line-height: 1.18;
-      letter-spacing: 0.1px;
-    }
-
-    .marca-texto span {
-      color: var(--verde);
-      font-size: 0.72rem;
-      font-weight: 800;
-      letter-spacing: 1px;
-      text-transform: uppercase;
+      object-position: left center;
     }
 
     .menu {
       display: flex;
+      flex-wrap: wrap;
       align-items: center;
-      gap: 21px;
-      color: #465864;
-      font-size: 0.9rem;
+      gap: 20px;
+      color: #4c5b63;
+      font-size: 0.88rem;
       font-weight: 700;
     }
 
@@ -165,18 +115,15 @@
       color: var(--verde);
     }
 
-    .menu-destacado {
-      padding: 10px 16px;
+    .menu-contacto {
+      padding: 9px 15px;
       border-radius: 8px;
       color: white !important;
-      background: var(--azul-medio);
-      box-shadow: 0 5px 14px rgba(30, 102, 143, 0.2);
-      transition: transform 0.2s ease, background 0.2s ease !important;
+      background: var(--azul);
     }
 
-    .menu-destacado:hover {
-      background: var(--azul-oscuro);
-      transform: translateY(-2px);
+    .menu-contacto:hover {
+      background: var(--verde);
     }
 
     /* =====================================================
@@ -184,170 +131,145 @@
     ====================================================== */
 
     .portada {
-      position: relative;
-      overflow: hidden;
-      padding: 86px 0 78px;
-      color: white;
+      padding: 75px 0;
       background:
-        radial-gradient(circle at 87% 12%, rgba(119, 199, 143, 0.31), transparent 28%),
-        radial-gradient(circle at 8% 82%, rgba(69, 145, 191, 0.25), transparent 30%),
-        linear-gradient(135deg, #091f31 0%, #123047 52%, #245e61 100%);
-    }
-
-    .portada::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      opacity: 0.13;
-      background-image:
-        linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
-      background-size: 48px 48px;
-      mask-image: linear-gradient(to bottom, black, transparent);
-      pointer-events: none;
+        linear-gradient(rgba(24, 56, 77, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(24, 56, 77, 0.04) 1px, transparent 1px),
+        #f8faf9;
+      background-size: 34px 34px;
     }
 
     .portada-grid {
-      position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(290px, 0.8fr);
-      gap: 58px;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 45px;
       align-items: center;
     }
 
-    .logo-portada {
-      width: min(350px, 85%);
+    .logo-portada-negro {
+      width: min(390px, 90%);
       height: auto;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
       object-fit: contain;
+      object-position: left center;
     }
 
     .etiqueta {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-bottom: 18px;
-      padding: 8px 13px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 30px;
-      color: #d9f2df;
-      background: rgba(255, 255, 255, 0.07);
-      font-size: 0.78rem;
+      display: inline-block;
+      margin-bottom: 15px;
+      padding: 7px 12px;
+      border-radius: 20px;
+      color: var(--verde);
+      background: var(--verde-claro);
+      font-size: 0.76rem;
       font-weight: 800;
-      letter-spacing: 0.9px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
-    .etiqueta::before {
-      content: "●";
-      color: #8bd49e;
-      font-size: 0.7rem;
-    }
-
     .portada h1 {
-      max-width: 760px;
+      max-width: 720px;
       margin: 0;
-      font-size: clamp(2.5rem, 5vw, 4.3rem);
-      line-height: 1.08;
-      letter-spacing: -1.7px;
+      color: var(--azul);
+      font-size: clamp(2.2rem, 4.5vw, 3.9rem);
+      line-height: 1.1;
+      letter-spacing: -1.2px;
     }
 
     .portada h1 span {
-      color: #9cdaac;
+      color: var(--verde);
     }
 
-    .portada-descripcion {
+    .portada p {
       max-width: 720px;
-      margin: 22px 0 0;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 1.05rem;
+      margin: 20px 0 0;
+      color: var(--gris-texto);
+      font-size: 1.03rem;
     }
 
-    .acciones-portada {
+    .botones-portada {
       display: flex;
       flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 30px;
+      gap: 12px;
+      margin-top: 28px;
     }
 
     .boton {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      min-height: 46px;
-      padding: 11px 19px;
-      border-radius: 9px;
-      font-size: 0.92rem;
+      min-height: 45px;
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 0.9rem;
       font-weight: 800;
-      transition: transform 0.22s ease, background 0.22s ease;
+      transition: transform 0.2s ease, background 0.2s ease;
     }
 
     .boton:hover {
       transform: translateY(-2px);
     }
 
-    .boton-primario {
-      color: var(--azul-oscuro);
-      background: white;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.16);
+    .boton-principal {
+      color: white;
+      background: var(--azul);
     }
 
-    .boton-primario:hover {
-      background: #e9f6ed;
+    .boton-principal:hover {
+      background: var(--verde);
     }
 
     .boton-secundario {
-      border: 1px solid rgba(255, 255, 255, 0.42);
-      color: white;
-      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid #bfcfd5;
+      color: var(--azul);
+      background: white;
     }
 
     .boton-secundario:hover {
-      background: rgba(255, 255, 255, 0.16);
+      background: var(--azul-claro);
     }
 
-    .panel-portada {
-      padding: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.17);
-      border-radius: var(--radio-grande);
-      background: rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
-      backdrop-filter: blur(10px);
+    .tarjeta-experiencia {
+      padding: 30px;
+      border: 1px solid var(--gris-linea);
+      border-radius: var(--radio);
+      background: white;
+      box-shadow: var(--sombra);
     }
 
-    .panel-portada h2 {
+    .tarjeta-experiencia h2 {
       margin: 0 0 16px;
-      color: white;
-      font-size: 1.12rem;
+      color: var(--azul);
+      font-size: 1.2rem;
     }
 
-    .lista-evidencias {
+    .lista-experiencia {
       display: grid;
-      gap: 15px;
+      gap: 14px;
       margin: 0;
       padding: 0;
       list-style: none;
     }
 
-    .lista-evidencias li {
+    .lista-experiencia li {
       display: grid;
-      grid-template-columns: 34px 1fr;
+      grid-template-columns: 35px 1fr;
       gap: 11px;
       align-items: start;
-      color: rgba(255, 255, 255, 0.87);
-      font-size: 0.9rem;
+      color: var(--gris-texto);
+      font-size: 0.91rem;
     }
 
-    .lista-evidencias b {
+    .numero-experiencia {
       display: grid;
       place-items: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 8px;
-      color: #dff6e5;
-      background: rgba(113, 196, 139, 0.22);
-      font-size: 0.75rem;
+      width: 31px;
+      height: 31px;
+      border-radius: 50%;
+      color: var(--verde);
+      background: var(--verde-claro);
+      font-size: 0.78rem;
+      font-weight: 800;
     }
 
     /* =====================================================
@@ -355,7 +277,7 @@
     ====================================================== */
 
     .portafolio {
-      padding: 80px 0;
+      padding: 75px 0;
       background: white;
     }
 
@@ -363,93 +285,92 @@
       display: flex;
       align-items: end;
       justify-content: space-between;
-      gap: 30px;
-      margin-bottom: 34px;
+      gap: 25px;
+      margin-bottom: 30px;
     }
 
     .titulo-seccion {
-      max-width: 800px;
+      max-width: 760px;
     }
 
     .subtitulo {
-      margin: 0 0 8px;
+      margin: 0 0 7px;
       color: var(--verde);
-      font-size: 0.78rem;
+      font-size: 0.76rem;
       font-weight: 800;
-      letter-spacing: 1.15px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .titulo-seccion h2 {
       margin: 0;
-      color: var(--azul-oscuro);
-      font-size: clamp(1.9rem, 3.2vw, 2.75rem);
-      line-height: 1.18;
-      letter-spacing: -0.7px;
+      color: var(--azul);
+      font-size: clamp(1.8rem, 3vw, 2.55rem);
+      line-height: 1.2;
     }
 
-    .titulo-seccion > p:last-child {
-      margin: 12px 0 0;
+    .titulo-seccion p:last-child {
+      margin: 11px 0 0;
       color: var(--gris-texto);
-      font-size: 1rem;
+      font-size: 0.98rem;
     }
 
-    .nota-seccion {
-      max-width: 350px;
+    .nota {
+      max-width: 340px;
       padding: 14px 16px;
       border-left: 4px solid var(--verde);
       border-radius: 0 10px 10px 0;
-      color: #456353;
+      color: #456153;
       background: var(--verde-claro);
-      font-size: 0.86rem;
+      font-size: 0.84rem;
     }
 
     .filtros {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 29px;
+      gap: 9px;
+      margin-bottom: 28px;
     }
 
     .filtro {
       cursor: pointer;
-      padding: 9px 15px;
-      border: 1px solid #cad6dd;
-      border-radius: 25px;
-      color: #53636e;
+      padding: 8px 14px;
+      border: 1px solid #cbd7dc;
+      border-radius: 22px;
+      color: #52616a;
       background: white;
-      font-size: 0.86rem;
+      font-size: 0.84rem;
       font-weight: 800;
-      transition: background 0.2s ease, color 0.2s ease, border 0.2s ease;
+      transition: 0.2s ease;
     }
 
     .filtro:hover,
     .filtro.activo {
-      border-color: var(--azul-medio);
+      border-color: var(--azul);
       color: white;
-      background: var(--azul-medio);
+      background: var(--azul);
     }
 
     .galeria {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+      gap: 20px;
     }
 
     .tarjeta {
-      overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-height: 423px;
-      border: 1px solid #dfe7eb;
-      border-radius: 17px;
+      overflow: hidden;
+      min-height: 390px;
+      border: 1px solid var(--gris-linea);
+      border-radius: 14px;
       background: white;
-      box-shadow: 0 8px 20px rgba(18, 48, 71, 0.07);
-      transition: transform 0.24s ease, box-shadow 0.24s ease;
+      box-shadow: 0 5px 15px rgba(20, 50, 66, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
 
     .tarjeta:hover {
-      transform: translateY(-6px);
+      transform: translateY(-4px);
       box-shadow: var(--sombra);
     }
 
@@ -457,176 +378,141 @@
       display: none;
     }
 
-    .tarjeta-media {
-      position: relative;
-      height: 178px;
-      overflow: hidden;
-    }
-
-    .tarjeta-etiqueta {
-      position: absolute;
-      z-index: 3;
-      top: 14px;
-      left: 14px;
-      padding: 6px 10px;
-      border-radius: 20px;
-      color: white;
-      background: rgba(10, 35, 53, 0.78);
-      backdrop-filter: blur(5px);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.55px;
-      text-transform: uppercase;
-    }
-
-    .portada-tarjeta {
+    .tarjeta-portada {
       position: relative;
       display: grid;
       place-items: center;
-      width: 100%;
-      height: 100%;
+      height: 140px;
       overflow: hidden;
       color: white;
-      font-size: 2.5rem;
+      font-size: 2.2rem;
       font-weight: 900;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
     }
 
-    .portada-tarjeta::before {
+    .tarjeta-portada::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.19;
+      opacity: 0.14;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.7) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.7) 1px, transparent 1px);
-      background-size: 26px 26px;
+        linear-gradient(rgba(255, 255, 255, 0.9) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.9) 1px, transparent 1px);
+      background-size: 25px 25px;
     }
 
-    .portada-tarjeta span {
+    .tarjeta-portada span {
       position: relative;
-      z-index: 2;
-      text-align: center;
+      z-index: 1;
     }
 
-    .portada-demo1 {
-      background: linear-gradient(135deg, #174b72, #3687a3);
+    .portada-sar {
+      background: linear-gradient(135deg, #245e43, #609d6c);
     }
 
-    .portada-demo3 {
-      background: linear-gradient(135deg, #713d3c, #ad6952);
+    .portada-def {
+      background: linear-gradient(135deg, #743f3e, #ad6952);
     }
 
-    .portada-demo4 {
-      background: linear-gradient(135deg, #245d43, #5d9e68);
+    .portada-us {
+      background: linear-gradient(135deg, #1f5273, #3f8cab);
     }
 
     .portada-pdf-verde {
-      background: linear-gradient(135deg, #285842, #57906a);
+      background: linear-gradient(135deg, #2a5c45, #57906a);
     }
 
     .portada-pdf-azul {
-      background: linear-gradient(135deg, #1a426b, #4a89af);
+      background: linear-gradient(135deg, #1b446b, #4c8db0);
     }
 
     .portada-pdf-arena {
-      background: linear-gradient(135deg, #725d3d, #aa8d5d);
+      background: linear-gradient(135deg, #6f5b3c, #a98c5e);
     }
 
     .portada-pdf-morado {
-      background: linear-gradient(135deg, #4b416d, #8273aa);
+      background: linear-gradient(135deg, #4c426e, #8475aa);
     }
 
-    .portada-externa-costa {
-      background: linear-gradient(135deg, #1c6a7d, #59a2aa);
+    .portada-costa {
+      background: linear-gradient(135deg, #1c6b7c, #5ca4aa);
     }
 
-    .portada-externa-manati {
-      background: linear-gradient(135deg, #265743, #6aaf78);
+    .portada-manati {
+      background: linear-gradient(135deg, #285b45, #6cac76);
     }
 
-    .portada-externa-recimy {
-      background: linear-gradient(135deg, #465182, #798bc0);
+    .portada-recimy {
+      background: linear-gradient(135deg, #465182, #7a8dc2);
     }
 
-    .portada-externa-incendios {
-      background: linear-gradient(135deg, #7c3b38, #bd684e);
+    .portada-incendios {
+      background: linear-gradient(135deg, #7d3b37, #bb684e);
     }
 
-    .portada-externa-atlas {
-      background: linear-gradient(135deg, #36556a, #7297a2);
+    .portada-atlas {
+      background: linear-gradient(135deg, #36566a, #7599a3);
     }
 
     .tarjeta-contenido {
       display: flex;
       flex: 1;
       flex-direction: column;
-      padding: 20px;
+      padding: 19px;
     }
 
-    .tarjeta-categoria {
+    .tarjeta-etiqueta {
       margin: 0 0 7px;
       color: var(--verde);
-      font-size: 0.7rem;
+      font-size: 0.69rem;
       font-weight: 800;
-      letter-spacing: 0.9px;
+      letter-spacing: 0.8px;
       text-transform: uppercase;
     }
 
     .tarjeta h3 {
       margin: 0 0 10px;
-      color: var(--azul-oscuro);
-      font-size: 1.06rem;
+      color: var(--azul);
+      font-size: 1.04rem;
       line-height: 1.35;
     }
 
-    .tarjeta p:not(.tarjeta-categoria) {
+    .tarjeta p:not(.tarjeta-etiqueta) {
       margin: 0;
       color: var(--gris-texto);
-      font-size: 0.89rem;
+      font-size: 0.88rem;
       line-height: 1.55;
     }
 
-    .tarjeta-acciones {
+    .tarjeta-pie {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
       margin-top: auto;
-      padding-top: 20px;
+      padding-top: 18px;
     }
 
-    .enlace-tarjeta {
+    .enlace {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      color: var(--azul-medio);
-      font-size: 0.87rem;
+      gap: 6px;
+      color: var(--azul);
+      font-size: 0.86rem;
       font-weight: 800;
-      transition: color 0.2s ease;
     }
 
-    .enlace-tarjeta:hover {
+    .enlace:hover {
       color: var(--verde);
     }
 
-    .flecha {
-      font-size: 1.05rem;
-      transition: transform 0.2s ease;
-    }
-
-    .enlace-tarjeta:hover .flecha {
-      transform: translateX(4px);
-    }
-
     .estado {
-      padding: 5px 9px;
-      border-radius: 20px;
-      color: #466170;
-      background: #edf3f6;
+      padding: 4px 8px;
+      border-radius: 15px;
+      color: #4c6572;
+      background: var(--azul-claro);
       font-size: 0.68rem;
       font-weight: 800;
-      white-space: nowrap;
     }
 
     /* =====================================================
@@ -634,68 +520,64 @@
     ====================================================== */
 
     .equipo {
-      padding: 78px 0;
-      background: #edf2f4;
+      padding: 75px 0;
+      background: var(--gris-fondo);
     }
 
     .grid-equipo {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
     }
 
     .miembro {
       overflow: hidden;
-      border: 1px solid rgba(18, 48, 71, 0.09);
-      border-radius: 17px;
+      border: 1px solid var(--gris-linea);
+      border-radius: 14px;
       background: white;
-      box-shadow: var(--sombra-suave);
+      box-shadow: 0 5px 15px rgba(20, 50, 66, 0.06);
     }
 
     .miembro-cabecera {
-      min-height: 116px;
-      padding: 25px;
+      padding: 20px;
       color: white;
-      background:
-        radial-gradient(circle at right top, rgba(144, 218, 165, 0.32), transparent 28%),
-        linear-gradient(135deg, var(--azul-oscuro), #28685c);
+      background: var(--azul);
     }
 
     .iniciales {
       display: grid;
       place-items: center;
-      width: 58px;
-      height: 58px;
-      border: 2px solid rgba(255, 255, 255, 0.7);
+      width: 48px;
+      height: 48px;
+      border: 1px solid rgba(255, 255, 255, 0.55);
       border-radius: 50%;
-      background: rgba(255, 255, 255, 0.12);
-      font-size: 0.95rem;
-      font-weight: 800;
-      letter-spacing: 0.5px;
-    }
-
-    .miembro-contenido {
-      padding: 23px;
-    }
-
-    .miembro h3 {
-      margin: 0;
-      color: var(--azul-oscuro);
-      font-size: 1.08rem;
-      line-height: 1.35;
-    }
-
-    .miembro-grado {
-      margin: 7px 0 13px;
-      color: var(--verde);
       font-size: 0.83rem;
       font-weight: 800;
     }
 
-    .miembro p:not(.miembro-grado) {
+    .miembro-contenido {
+      padding: 21px;
+    }
+
+    .miembro h3 {
+      margin: 0;
+      color: var(--azul);
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+
+    .cargo {
+      margin: 8px 0 12px;
+      color: var(--verde);
+      font-size: 0.84rem;
+      font-weight: 800;
+      line-height: 1.45;
+    }
+
+    .miembro p:last-child {
       margin: 0;
       color: var(--gris-texto);
-      font-size: 0.89rem;
+      font-size: 0.88rem;
     }
 
     /* =====================================================
@@ -704,203 +586,175 @@
 
     .organigrama {
       margin-top: 48px;
-      padding-top: 42px;
+      padding-top: 40px;
       border-top: 1px solid var(--gris-linea);
     }
 
-    .organigrama-titulo {
-      max-width: 760px;
-      margin-bottom: 32px;
+    .organigrama-intro {
+      max-width: 720px;
+      margin-bottom: 28px;
     }
 
-    .organigrama-titulo h3 {
+    .organigrama-intro h3 {
       margin: 0;
-      color: var(--azul-oscuro);
+      color: var(--azul);
       font-size: clamp(1.45rem, 2.5vw, 2rem);
       line-height: 1.25;
     }
 
-    .organigrama-titulo p:last-child {
+    .organigrama-intro p:last-child {
       margin: 10px 0 0;
       color: var(--gris-texto);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
 
-    .organigrama-estructura {
-      position: relative;
+    .organigrama-contenedor {
       padding: 28px;
       border: 1px solid var(--gris-linea);
-      border-radius: var(--radio-grande);
-      background:
-        linear-gradient(rgba(31, 102, 143, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(31, 102, 143, 0.035) 1px, transparent 1px),
-        #f9fbfc;
-      background-size: 28px 28px;
+      border-radius: var(--radio);
+      background: white;
     }
 
-    .organigrama-central {
-      position: relative;
-      z-index: 2;
-      max-width: 465px;
+    .org-central {
+      width: min(410px, 100%);
       margin: 0 auto;
-      padding: 22px;
-      border: 1px solid rgba(17, 47, 70, 0.12);
-      border-radius: 15px;
-      color: white;
+      padding: 19px;
+      border: 1px solid var(--gris-linea);
+      border-radius: 13px;
       text-align: center;
-      background:
-        radial-gradient(circle at top right, rgba(147, 224, 172, 0.28), transparent 28%),
-        linear-gradient(135deg, var(--azul-oscuro), #286b5d);
-      box-shadow: var(--sombra-suave);
+      background: #f8fbfa;
     }
 
-    .org-etiqueta {
-      display: inline-block;
-      margin-bottom: 8px;
-      padding: 5px 10px;
-      border-radius: 20px;
-      color: #d9f4df;
-      background: rgba(255, 255, 255, 0.12);
-      font-size: 0.68rem;
-      font-weight: 800;
-      letter-spacing: 0.7px;
-      text-transform: uppercase;
+    .logo-organigrama {
+      width: min(220px, 90%);
+      max-height: 70px;
+      margin: 0 auto 12px;
+      object-fit: contain;
     }
 
-    .organigrama-central h3 {
+    .org-central p {
       margin: 0;
-      color: white;
-      font-size: 1.16rem;
-      line-height: 1.3;
+      color: var(--gris-texto);
+      font-size: 0.84rem;
     }
 
-    .organigrama-central p {
-      margin: 8px 0 0;
-      color: rgba(255, 255, 255, 0.84);
-      font-size: 0.86rem;
-    }
-
-    .organigrama-ramas {
+    .org-areas {
       position: relative;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
+      gap: 20px;
       margin-top: 62px;
     }
 
-    .organigrama-ramas::before {
+    .org-areas::before {
       content: "";
       position: absolute;
-      top: -28px;
-      left: 16.65%;
-      right: 16.65%;
+      top: -30px;
+      left: 16.7%;
+      right: 16.7%;
       height: 2px;
-      background: #91ad9d;
+      background: #9ab4a3;
     }
 
-    .organigrama-ramas::after {
+    .org-areas::after {
       content: "";
       position: absolute;
       top: -62px;
       left: 50%;
       width: 2px;
-      height: 34px;
-      background: #91ad9d;
+      height: 32px;
+      background: #9ab4a3;
       transform: translateX(-50%);
     }
 
-    .area-organigrama {
+    .org-area {
       position: relative;
-      display: flex;
-      flex-direction: column;
     }
 
-    .area-organigrama::before {
+    .org-area::before {
       content: "";
       position: absolute;
-      top: -28px;
+      top: -30px;
       left: 50%;
       width: 2px;
-      height: 28px;
-      background: #91ad9d;
+      height: 30px;
+      background: #9ab4a3;
       transform: translateX(-50%);
     }
 
-    .area-cabecera {
-      min-height: 215px;
-      padding: 22px;
-      border: 1px solid rgba(17, 47, 70, 0.12);
-      border-radius: 14px;
+    .org-area-principal {
+      min-height: 176px;
+      padding: 20px;
+      border: 1px solid var(--gris-linea);
+      border-radius: 12px;
       background: white;
-      box-shadow: var(--sombra-suave);
     }
 
-    .area-numero {
+    .org-numero {
       display: inline-block;
-      margin-bottom: 12px;
-      padding: 5px 9px;
-      border-radius: 20px;
-      color: var(--verde-oscuro);
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 14px;
+      color: var(--verde);
       background: var(--verde-claro);
       font-size: 0.67rem;
       font-weight: 800;
-      letter-spacing: 0.7px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
     }
 
-    .area-cabecera h4 {
+    .org-area h4 {
       margin: 0;
-      color: var(--azul-oscuro);
-      font-size: 1.05rem;
-      line-height: 1.32;
+      color: var(--azul);
+      font-size: 1rem;
+      line-height: 1.35;
     }
 
-    .area-responsable {
-      margin: 13px 0 0;
+    .org-responsable {
+      margin: 12px 0 0;
       color: var(--gris-texto);
-      font-size: 0.86rem;
-      line-height: 1.5;
+      font-size: 0.84rem;
+      line-height: 1.45;
     }
 
-    .area-responsable strong {
-      color: var(--verde-oscuro);
+    .org-responsable strong {
+      color: var(--verde);
     }
 
-    .equipo-area {
+    .subequipo {
       position: relative;
-      margin: 21px 14px 0;
-      padding: 16px;
+      margin: 18px 11px 0;
+      padding: 14px;
       border: 1px dashed #9bb6a4;
-      border-radius: 12px;
-      background: #f4faf6;
+      border-radius: 10px;
+      background: #f5faf6;
     }
 
-    .equipo-area::before {
+    .subequipo::before {
       content: "";
       position: absolute;
-      top: -22px;
+      top: -19px;
       left: 50%;
       width: 2px;
-      height: 21px;
+      height: 18px;
       background: #9bb6a4;
       transform: translateX(-50%);
     }
 
-    .equipo-area span {
+    .subequipo strong {
       display: block;
-      margin-bottom: 6px;
-      color: var(--verde-oscuro);
-      font-size: 0.74rem;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+      margin-bottom: 5px;
+      color: var(--verde);
+      font-size: 0.72rem;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
     }
 
-    .equipo-area p {
+    .subequipo p {
       margin: 0;
-      color: #51645a;
-      font-size: 0.82rem;
-      line-height: 1.48;
+      color: #586b60;
+      font-size: 0.8rem;
+      line-height: 1.45;
     }
 
     /* =====================================================
@@ -908,79 +762,60 @@
     ====================================================== */
 
     .contacto {
-      position: relative;
-      overflow: hidden;
-      padding: 74px 0;
+      padding: 62px 0;
       color: white;
-      background:
-        radial-gradient(circle at 86% 14%, rgba(126, 210, 153, 0.28), transparent 25%),
-        linear-gradient(135deg, #091f31, #17485d);
+      background: var(--azul);
     }
 
     .contacto-grid {
-      position: relative;
       display: grid;
       grid-template-columns: 1.15fr 0.85fr;
-      gap: 42px;
+      gap: 35px;
       align-items: center;
     }
 
-    .contacto .subtitulo {
-      color: #bfe7ca;
-    }
-
     .contacto h2 {
-      margin: 0 0 12px;
-      font-size: clamp(1.9rem, 3vw, 2.75rem);
-      line-height: 1.18;
-      letter-spacing: -0.6px;
-    }
-
-    .contacto-texto {
       margin: 0;
-      color: rgba(255, 255, 255, 0.85);
-      font-size: 1rem;
+      font-size: clamp(1.7rem, 3vw, 2.45rem);
+      line-height: 1.2;
     }
 
-    .tarjeta-contacto {
-      padding: 28px;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 17px;
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(9px);
+    .contacto p {
+      margin: 12px 0 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 0.98rem;
     }
 
-    .logo-contacto {
+    .contacto-logo {
+      padding: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .logo-blanco {
       width: min(255px, 90%);
-      height: auto;
-      margin-bottom: 20px;
+      margin-bottom: 15px;
       object-fit: contain;
     }
 
-    .tarjeta-contacto h3 {
-      margin: 0 0 9px;
-      color: #d7f2df;
-      font-size: 1.05rem;
-    }
-
-    .tarjeta-contacto p {
+    .contacto-logo p {
       margin: 0;
-      color: rgba(255, 255, 255, 0.82);
-      font-size: 0.9rem;
+      font-size: 0.87rem;
     }
 
     .pie {
-      padding: 28px 0;
-      color: #5e6e78;
+      padding: 24px 0;
+      color: #607078;
       background: #f8fafb;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
     }
 
     .pie-contenido {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 15px;
     }
 
     .pie p {
@@ -988,66 +823,38 @@
     }
 
     /* =====================================================
-       RESPONSIVE
+       VISTA MÓVIL
     ====================================================== */
 
-    @media (max-width: 1000px) {
+    @media (max-width: 960px) {
       .portada-grid,
       .contacto-grid {
         grid-template-columns: 1fr;
-      }
-
-      .panel-portada {
-        max-width: 700px;
       }
 
       .grid-equipo {
         grid-template-columns: 1fr;
       }
 
-      .organigrama-ramas {
+      .org-areas {
         grid-template-columns: 1fr;
-        max-width: 620px;
+        max-width: 580px;
         margin-right: auto;
         margin-left: auto;
       }
 
-      .organigrama-ramas::before {
-        top: -34px;
-        bottom: 0;
-        left: 50%;
-        right: auto;
-        width: 2px;
-        height: auto;
-        background: #91ad9d;
-        transform: translateX(-50%);
+      .org-areas::before,
+      .org-areas::after,
+      .org-area::before {
+        display: none;
       }
 
-      .organigrama-ramas::after {
-        height: 34px;
-      }
-
-      .area-organigrama {
-        padding-top: 28px;
-      }
-
-      .area-organigrama::before {
-        top: 0;
-        height: 28px;
-      }
-
-      .area-cabecera {
-        min-height: auto;
-      }
-
-      .menu {
-        gap: 13px;
-        font-size: 0.83rem;
+      .org-area {
+        padding-top: 0;
       }
     }
 
-    @media (max-width: 740px) {
-      .barra-superior-contenido,
+    @media (max-width: 720px) {
       .navegacion,
       .encabezado-seccion,
       .pie-contenido {
@@ -1055,92 +862,45 @@
         align-items: flex-start;
       }
 
-      .barra-superior-contenido {
-        gap: 3px;
-        padding: 7px 0;
-      }
-
       .navegacion {
-        gap: 14px;
-        padding: 14px 0;
-      }
-
-      .marca {
-        min-width: 0;
+        gap: 12px;
+        padding: 12px 0;
       }
 
       .logo-navegacion {
-        width: 58px;
-        height: 54px;
-      }
-
-      .marca-texto strong {
-        font-size: 0.83rem;
+        width: 165px;
+        max-height: 52px;
       }
 
       .menu {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 10px 16px;
+        gap: 10px 15px;
       }
 
-      .portada {
-        padding: 60px 0;
+      .portada,
+      .portafolio,
+      .equipo {
+        padding: 55px 0;
       }
 
       .portada h1 {
-        font-size: 2.45rem;
+        font-size: 2.35rem;
       }
 
-      .logo-portada {
-        width: min(270px, 82%);
-      }
-
-      .portafolio,
-      .equipo {
-        padding: 58px 0;
-      }
-
-      .galeria {
-        grid-template-columns: 1fr;
-      }
-
-      .nota-seccion {
+      .nota {
         max-width: none;
       }
 
-      .tarjeta {
-        min-height: 390px;
+      .tarjeta-experiencia {
+        padding: 23px;
       }
 
-      .filtros {
-        gap: 8px;
-      }
-
-      .filtro {
-        font-size: 0.8rem;
-      }
-
-      .organigrama-estructura {
+      .organigrama-contenedor {
         padding: 18px;
       }
 
-      .organigrama-central {
-        padding: 19px 16px;
-      }
-
-      .organigrama-ramas {
-        gap: 16px;
-        margin-top: 55px;
-      }
-
-      .area-cabecera {
-        padding: 19px;
-      }
-
-      .equipo-area {
-        margin-right: 8px;
-        margin-left: 8px;
+      .subequipo {
+        margin-right: 5px;
+        margin-left: 5px;
       }
     }
   </style>
@@ -1149,39 +909,24 @@
 <body>
 
   <!-- =====================================================
-       BARRA SUPERIOR
-  ====================================================== -->
-  <div class="barra-superior">
-    <div class="contenedor barra-superior-contenido">
-      <p>Centro Holístico de Estudios Territoriales · CHET</p>
-      <p>Portafolio de Evidencias Territoriales</p>
-    </div>
-  </div>
-
-  <!-- =====================================================
        ENCABEZADO
   ====================================================== -->
   <header class="encabezado">
     <div class="contenedor navegacion">
 
-      <a href="#inicio" class="marca" aria-label="Ir al inicio">
+      <a class="marca" href="#inicio" aria-label="Ir al inicio">
         <img
           class="logo-navegacion"
           src="LOGO_CHET_vect_clip.png"
           alt="Centro Holístico de Estudios Territoriales"
         >
-
-        <div class="marca-texto">
-          <strong>Centro Holístico de<br>Estudios Territoriales</strong>
-          <span>CHET</span>
-        </div>
       </a>
 
       <nav class="menu" aria-label="Navegación principal">
         <a href="#inicio">Inicio</a>
-        <a href="#portafolio">Evidencias</a>
+        <a href="#portafolio">Portafolio</a>
         <a href="#equipo">Equipo</a>
-        <a class="menu-destacado" href="#contacto">Contacto</a>
+        <a class="menu-contacto" href="#contacto">Contacto</a>
       </nav>
 
     </div>
@@ -1197,27 +942,33 @@
 
         <div>
           <img
-            class="logo-portada"
-            src="logo_CHET_tranparent_W.png"
+            class="logo-portada-negro"
+            src="LOGO_CHET_vect_clip.png"
             alt="Centro Holístico de Estudios Territoriales"
           >
 
           <div class="etiqueta">Portafolio de evidencias</div>
 
           <h1>
-            Información territorial que se convierte en
-            <span>resultados verificables.</span>
+            Información territorial para
+            <span>decisiones mejor informadas.</span>
           </h1>
 
-          <p class="portada-descripcion">
-            Este portafolio reúne visores geoespaciales, documentos técnicos y plataformas
-            territoriales que evidencian experiencias de análisis, monitoreo, cartografía,
-            conservación y gestión socioambiental.
+          <p>
+            Somos una empresa de reciente creación, respaldada por la experiencia
+            individual de sus integrantes, quienes cuentan con más de diez años de
+            trayectoria profesional en diferentes instituciones públicas y privadas de México.
           </p>
 
-          <div class="acciones-portada">
-            <a class="boton boton-primario" href="#portafolio">
-              Ver evidencias <span>↓</span>
+          <p>
+            Este sitio reúne evidencias de trabajo relacionadas con análisis territorial,
+            cartografía, monitoreo ambiental, conservación, percepción remota y plataformas
+            geoespaciales.
+          </p>
+
+          <div class="botones-portada">
+            <a class="boton boton-principal" href="#portafolio">
+              Ver portafolio
             </a>
 
             <a class="boton boton-secundario" href="#equipo">
@@ -1226,28 +977,28 @@
           </div>
         </div>
 
-        <aside class="panel-portada">
-          <h2>Contenido del portafolio</h2>
+        <aside class="tarjeta-experiencia">
+          <h2>Una empresa nueva con experiencia consolidada</h2>
 
-          <ul class="lista-evidencias">
+          <ul class="lista-experiencia">
             <li>
-              <b>01</b>
-              <span>Visores desarrollados para consulta, monitoreo y análisis territorial.</span>
+              <span class="numero-experiencia">01</span>
+              <span>Empresa de reciente creación orientada al análisis y gestión territorial.</span>
             </li>
 
             <li>
-              <b>02</b>
-              <span>Documentos técnicos vinculados con conservación, planeación y evaluación ambiental.</span>
+              <span class="numero-experiencia">02</span>
+              <span>Trayectoria individual de más de diez años en instituciones públicas y privadas de México.</span>
             </li>
 
             <li>
-              <b>03</b>
-              <span>Plataformas externas de referencia para visualización de información geoespacial.</span>
+              <span class="numero-experiencia">03</span>
+              <span>Experiencia aplicada en proyectos ambientales, territoriales y geoespaciales.</span>
             </li>
 
             <li>
-              <b>04</b>
-              <span>Evidencias organizadas para facilitar su consulta y presentación institucional.</span>
+              <span class="numero-experiencia">04</span>
+              <span>Equipos técnicos organizados por áreas de especialización.</span>
             </li>
           </ul>
         </aside>
@@ -1256,7 +1007,7 @@
     </section>
 
     <!-- ===================================================
-         PORTAFOLIO DE EVIDENCIAS
+         PORTAFOLIO
     ==================================================== -->
     <section class="portafolio" id="portafolio">
       <div class="contenedor">
@@ -1268,17 +1019,18 @@
             <h2>Visores, documentos técnicos y plataformas territoriales.</h2>
 
             <p>
-              Selección de herramientas, productos cartográficos y recursos de consulta vinculados con la experiencia técnica del Centro Holístico de Estudios Territoriales.
+              Selección de herramientas y recursos vinculados con experiencias de análisis,
+              monitoreo, cartografía, planeación y gestión socioambiental.
             </p>
           </div>
 
-          <div class="nota-seccion">
-            Los documentos y plataformas externas se presentan como recursos de consulta y referencia. Sus contenidos y derechos pertenecen a sus autores e instituciones responsables.
+          <div class="nota">
+            Los documentos y plataformas externas se presentan como recursos de consulta y referencia. Sus contenidos pertenecen a sus respectivos autores e instituciones.
           </div>
         </div>
 
-        <div class="filtros" aria-label="Filtrar evidencias del portafolio">
-          <button class="filtro activo" type="button" data-filter="todos">Todas las evidencias</button>
+        <div class="filtros" aria-label="Filtrar evidencias">
+          <button class="filtro activo" type="button" data-filter="todos">Todas</button>
           <button class="filtro" type="button" data-filter="visor">Visores CHET</button>
           <button class="filtro" type="button" data-filter="documento">Documentos técnicos</button>
           <button class="filtro" type="button" data-filter="plataforma">Plataformas territoriales</button>
@@ -1286,31 +1038,32 @@
 
         <div class="galeria">
 
-          <!-- VISORES CHET -->
+          <!-- =================================================
+               VISORES CHET
+          ================================================== -->
 
           <article class="tarjeta" data-category="visor">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Visor CHET</span>
-              <div class="portada-tarjeta portada-demo4">
-                <span>SAR</span>
-              </div>
+            <div class="tarjeta-portada portada-sar">
+              <span>SAR</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Monitoreo de agroecosistemas</p>
+              <p class="tarjeta-etiqueta">Visor CHET · Agroecosistemas</p>
+
               <h3>Monitoreo de agroecosistemas tropicales</h3>
+
               <p>
-                Visor interactivo orientado a la exploración de patrones territoriales y aplicaciones de percepción remota en agroecosistemas del trópico húmedo.
+                Visor interactivo para explorar patrones territoriales y aplicaciones de percepción remota en agroecosistemas del trópico húmedo.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo4"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir visor <span class="flecha">→</span>
+                  Abrir visor →
                 </a>
 
                 <span class="estado">Interactivo</span>
@@ -1319,28 +1072,27 @@
           </article>
 
           <article class="tarjeta" data-category="visor">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Visor CHET</span>
-              <div class="portada-tarjeta portada-demo3">
-                <span>DEF</span>
-              </div>
+            <div class="tarjeta-portada portada-def">
+              <span>DEF</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Monitoreo forestal</p>
+              <p class="tarjeta-etiqueta">Visor CHET · Monitoreo forestal</p>
+
               <h3>Deforestación y pérdida de cobertura forestal</h3>
+
               <p>
-                Herramienta de consulta para identificar patrones de pérdida de cobertura forestal y apoyar el análisis territorial de procesos de deforestación.
+                Herramienta para identificar patrones de pérdida de cobertura forestal y apoyar el análisis territorial de procesos de deforestación.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo3"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir visor <span class="flecha">→</span>
+                  Abrir visor →
                 </a>
 
                 <span class="estado">Interactivo</span>
@@ -1349,28 +1101,27 @@
           </article>
 
           <article class="tarjeta" data-category="visor">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Visor CHET</span>
-              <div class="portada-tarjeta portada-demo1">
-                <span>US</span>
-              </div>
+            <div class="tarjeta-portada portada-us">
+              <span>US</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Cobertura y uso del suelo</p>
+              <p class="tarjeta-etiqueta">Visor CHET · Cartografía</p>
+
               <h3>Uso de suelo y coberturas territoriales</h3>
+
               <p>
-                Visor de cartografía temática para consultar coberturas, uso del suelo y patrones espaciales de la región norte de Yucatán.
+                Visor de cartografía temática para consultar coberturas, uso del suelo y patrones espaciales en la región norte de Yucatán.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://chestudiosterritoriales.users.earthengine.app/view/demo1#lon=-89.63653415991011;lat=18.476576959179422;zoom=9;"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir visor <span class="flecha">→</span>
+                  Abrir visor →
                 </a>
 
                 <span class="estado">Interactivo</span>
@@ -1378,31 +1129,32 @@
             </div>
           </article>
 
-          <!-- DOCUMENTOS TÉCNICOS -->
+          <!-- =================================================
+               DOCUMENTOS TÉCNICOS
+          ================================================== -->
 
           <article class="tarjeta" data-category="documento">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Documento técnico</span>
-              <div class="portada-tarjeta portada-pdf-verde">
-                <span>PDF</span>
-              </div>
+            <div class="tarjeta-portada portada-pdf-verde">
+              <span>PDF</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Los Tuxtlas</p>
+              <p class="tarjeta-etiqueta">Documento técnico · Los Tuxtlas</p>
+
               <h3>Informe de la Reserva Arrecifal Los Tuxtlas</h3>
+
               <p>
                 Documento técnico de consulta sobre conservación, procesos ambientales y territorio en la región de Los Tuxtlas.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://cemda.org.mx/wp-content/uploads/2017/01/Informe-Reserva-Arrecifal-Los-Tuxtlas-finall-1-1.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Consultar documento <span class="flecha">→</span>
+                  Consultar →
                 </a>
 
                 <span class="estado">PDF</span>
@@ -1411,28 +1163,27 @@
           </article>
 
           <article class="tarjeta" data-category="documento">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Documento técnico</span>
-              <div class="portada-tarjeta portada-pdf-azul">
-                <span>POET</span>
-              </div>
+            <div class="tarjeta-portada portada-pdf-azul">
+              <span>POET</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Planeación territorial</p>
+              <p class="tarjeta-etiqueta">Documento técnico · Xalapa</p>
+
               <h3>Caracterización del POERC Xalapa</h3>
+
               <p>
                 Documento de referencia para el análisis territorial y ambiental asociado con el Programa de Ordenamiento Ecológico Regional de Xalapa.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://repositorio.veracruz.gob.mx/medioambiente/wp-content/uploads/sites/9/2022/11/Etapa_de_caracterizaci%C3%B3n_del_POERCX.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Consultar documento <span class="flecha">→</span>
+                  Consultar →
                 </a>
 
                 <span class="estado">PDF</span>
@@ -1441,28 +1192,27 @@
           </article>
 
           <article class="tarjeta" data-category="documento">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Documento técnico</span>
-              <div class="portada-tarjeta portada-pdf-arena">
-                <span>EPJ</span>
-              </div>
+            <div class="tarjeta-portada portada-pdf-arena">
+              <span>EPJ</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Conectividad y paisaje</p>
+              <p class="tarjeta-etiqueta">Documento técnico · Campeche</p>
+
               <h3>Corredor Balam-Béh</h3>
+
               <p>
-                Documento técnico de referencia para el análisis de conectividad ecológica, conservación y planeación territorial en Campeche.
+                Documento técnico de referencia para el análisis de conectividad ecológica, conservación y planeación territorial.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://www.semabicce.campeche.gob.mx/wp-content/uploads/2024/11/EPJ_Corredor-Balam-Beh_PPY_27112024_VF.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Consultar documento <span class="flecha">→</span>
+                  Consultar →
                 </a>
 
                 <span class="estado">PDF</span>
@@ -1471,28 +1221,27 @@
           </article>
 
           <article class="tarjeta" data-category="documento">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Documento técnico</span>
-              <div class="portada-tarjeta portada-pdf-morado">
-                <span>MIA</span>
-              </div>
+            <div class="tarjeta-portada portada-pdf-morado">
+              <span>MIA</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Evaluación ambiental</p>
-              <h3>Manifestación de Impacto Ambiental: Chicxulub</h3>
+              <p class="tarjeta-etiqueta">Documento técnico · Chicxulub</p>
+
+              <h3>Manifestación de Impacto Ambiental</h3>
+
               <p>
-                Documento de consulta vinculado con componentes ambientales y territoriales de un proyecto de parque ecológico en Chicxulub.
+                Documento de consulta relacionado con componentes ambientales y territoriales de un proyecto de parque ecológico en Chicxulub.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://articulacionyucatan.wordpress.com/wp-content/uploads/2018/08/proyecto-parque-ec3b3lico-chicxulub.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Consultar documento <span class="flecha">→</span>
+                  Consultar →
                 </a>
 
                 <span class="estado">PDF</span>
@@ -1500,31 +1249,32 @@
             </div>
           </article>
 
-          <!-- PLATAFORMAS TERRITORIALES -->
+          <!-- =================================================
+               PLATAFORMAS TERRITORIALES
+          ================================================== -->
 
           <article class="tarjeta" data-category="plataforma">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma territorial</span>
-              <div class="portada-tarjeta portada-externa-costa">
-                <span>EC</span>
-              </div>
+            <div class="tarjeta-portada portada-costa">
+              <span>EC</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">StoryMap</p>
+              <p class="tarjeta-etiqueta">Plataforma territorial · StoryMap</p>
+
               <h3>Ecosistemas costeros</h3>
+
               <p>
                 Recurso interactivo externo para explorar información territorial y ambiental relacionada con ecosistemas costeros.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://storymaps.arcgis.com/stories/3ec57e03042842d9af99c57b7e8f4dc7"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir plataforma <span class="flecha">→</span>
+                  Abrir plataforma →
                 </a>
 
                 <span class="estado">Externa</span>
@@ -1533,28 +1283,27 @@
           </article>
 
           <article class="tarjeta" data-category="plataforma">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma territorial</span>
-              <div class="portada-tarjeta portada-externa-manati">
-                <span>MAN</span>
-              </div>
+            <div class="tarjeta-portada portada-manati">
+              <span>MAN</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Visor temático</p>
+              <p class="tarjeta-etiqueta">Plataforma territorial · Visor</p>
+
               <h3>Información territorial sobre manatí</h3>
+
               <p>
                 Visor externo de consulta con información geoespacial vinculada con el manatí y su contexto territorial.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://wkkf.maps.arcgis.com/apps/mapviewer/index.html?webmap=9c906141a9f3463e88562ec73855edf7"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir plataforma <span class="flecha">→</span>
+                  Abrir plataforma →
                 </a>
 
                 <span class="estado">Externa</span>
@@ -1563,28 +1312,27 @@
           </article>
 
           <article class="tarjeta" data-category="plataforma">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma territorial</span>
-              <div class="portada-tarjeta portada-externa-recimy">
-                <span>REC</span>
-              </div>
+            <div class="tarjeta-portada portada-recimy">
+              <span>REC</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Visor territorial</p>
+              <p class="tarjeta-etiqueta">Plataforma territorial · Visor</p>
+
               <h3>RECIMY</h3>
+
               <p>
-                Plataforma cartográfica externa incorporada como referencia para consulta y comunicación de información geoespacial.
+                Plataforma cartográfica externa de consulta y comunicación de información geoespacial.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://wkkf.maps.arcgis.com/apps/mapviewer/index.html?webmap=f4216d1d65bd491ab2fac7e0894c6b58"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir plataforma <span class="flecha">→</span>
+                  Abrir plataforma →
                 </a>
 
                 <span class="estado">Externa</span>
@@ -1593,28 +1341,27 @@
           </article>
 
           <article class="tarjeta" data-category="plataforma">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma territorial</span>
-              <div class="portada-tarjeta portada-externa-incendios">
-                <span>FUE</span>
-              </div>
+            <div class="tarjeta-portada portada-incendios">
+              <span>FUE</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Dashboard</p>
+              <p class="tarjeta-etiqueta">Plataforma territorial · Dashboard</p>
+
               <h3>Monitoreo de incendios</h3>
+
               <p>
                 Tablero territorial externo para el seguimiento y visualización de información relacionada con incendios.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://wkkf.maps.arcgis.com/apps/dashboards/b2f6d65637e944c3b3f1b98a054b8eaa"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir plataforma <span class="flecha">→</span>
+                  Abrir plataforma →
                 </a>
 
                 <span class="estado">Externa</span>
@@ -1623,28 +1370,27 @@
           </article>
 
           <article class="tarjeta" data-category="plataforma">
-            <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma territorial</span>
-              <div class="portada-tarjeta portada-externa-atlas">
-                <span>AT</span>
-              </div>
+            <div class="tarjeta-portada portada-atlas">
+              <span>AT</span>
             </div>
 
             <div class="tarjeta-contenido">
-              <p class="tarjeta-categoria">Atlas territorial</p>
+              <p class="tarjeta-etiqueta">Plataforma territorial · Atlas</p>
+
               <h3>Atlas interactivo</h3>
+
               <p>
                 Plataforma externa de consulta cartográfica para explorar información temática y territorial mediante un atlas interactivo.
               </p>
 
-              <div class="tarjeta-acciones">
+              <div class="tarjeta-pie">
                 <a
-                  class="enlace-tarjeta"
+                  class="enlace"
                   href="https://wkkf.maps.arcgis.com/apps/instant/atlas/index.html?appid=e6bed9bb0e45453f94f351b0a29aef36&webmap=b52a2d999f184e7a90c77a3762d3ff3f"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Abrir plataforma <span class="flecha">→</span>
+                  Abrir plataforma →
                 </a>
 
                 <span class="estado">Externa</span>
@@ -1666,10 +1412,10 @@
           <div class="titulo-seccion">
             <p class="subtitulo">Equipo y estructura operativa</p>
 
-            <h2>Responsables de las áreas estratégicas del Centro.</h2>
+            <h2>Tres áreas estratégicas con equipos técnicos de apoyo.</h2>
 
             <p>
-              CHET opera mediante tres áreas articuladas. Cada responsable coordina un equipo técnico de apoyo para el desarrollo de proyectos, análisis y productos territoriales.
+              La empresa se organiza en áreas complementarias, coordinadas por sus responsables y respaldadas por equipos técnicos para atender proyectos territoriales y ambientales.
             </p>
           </div>
         </div>
@@ -1684,12 +1430,12 @@
             <div class="miembro-contenido">
               <h3>M.C. Geovanni Fidel Aguilar Orea</h3>
 
-              <p class="miembro-grado">
+              <p class="cargo">
                 Responsable de Planificación y Gestión Territorial
               </p>
 
               <p>
-                Coordina procesos de planificación territorial, análisis espacial, cartografía aplicada, monitoreo geoespacial, conectividad ecológica y articulación de información para la toma de decisiones.
+                Coordina procesos de planificación, análisis territorial, cartografía aplicada y gestión de información para la toma de decisiones.
               </p>
             </div>
           </article>
@@ -1702,12 +1448,12 @@
             <div class="miembro-contenido">
               <h3>M.C. Fabiola Torres Duque</h3>
 
-              <p class="miembro-grado">
+              <p class="cargo">
                 Responsable del Departamento de Evaluación y Regulación Ambiental
               </p>
 
               <p>
-                Coordina procesos de evaluación ambiental, análisis normativo, regulación territorial, gestión socioambiental e integración de criterios técnicos para proyectos ambientales.
+                Coordina procesos de evaluación ambiental, regulación, análisis normativo y gestión socioambiental.
               </p>
             </div>
           </article>
@@ -1720,12 +1466,12 @@
             <div class="miembro-contenido">
               <h3>Lic. Luis Ángel Aguilar Orea</h3>
 
-              <p class="miembro-grado">
+              <p class="cargo">
                 Responsable del Departamento de Tecnologías de Información Geográfica
               </p>
 
               <p>
-                Coordina la integración, organización y comunicación de información geográfica, así como el soporte técnico para visores, bases de datos, cartografía digital y herramientas SIG.
+                Coordina la integración de información geográfica, sistemas SIG, cartografía digital, visores y soporte tecnológico.
               </p>
             </div>
           </article>
@@ -1734,85 +1480,89 @@
 
         <div class="organigrama">
 
-          <div class="organigrama-titulo">
+          <div class="organigrama-intro">
             <p class="subtitulo">Organigrama funcional</p>
 
-            <h3>Estructura de coordinación y equipos técnicos.</h3>
+            <h3>Coordinación de áreas y equipos técnicos.</h3>
 
             <p>
-              Las tres áreas trabajan de manera articulada y cada una cuenta con un equipo técnico de apoyo, sin especificar a los integrantes de los subequipos.
+              Los subequipos se muestran como unidades de apoyo técnico sin especificar a sus integrantes.
             </p>
           </div>
 
-          <div class="organigrama-estructura">
+          <div class="organigrama-contenedor">
 
-            <div class="organigrama-central">
-              <span class="org-etiqueta">Coordinación institucional</span>
-              <h3>Centro Holístico de Estudios Territoriales</h3>
-              <p>Integración de capacidades técnicas, territoriales, ambientales y geográficas.</p>
+            <div class="org-central">
+              <img
+                class="logo-organigrama"
+                src="LOGO_CHET_vect_clip.png"
+                alt="Centro Holístico de Estudios Territoriales"
+              >
+
+              <p>Coordinación institucional y articulación de capacidades técnicas.</p>
             </div>
 
-            <div class="organigrama-ramas">
+            <div class="org-areas">
 
-              <article class="area-organigrama">
-                <div class="area-cabecera">
-                  <span class="area-numero">Área 01</span>
+              <article class="org-area">
+                <div class="org-area-principal">
+                  <span class="org-numero">Área 01</span>
 
                   <h4>Planificación y Gestión Territorial</h4>
 
-                  <p class="area-responsable">
+                  <p class="org-responsable">
                     <strong>Responsable:</strong><br>
                     M.C. Geovanni Fidel Aguilar Orea
                   </p>
                 </div>
 
-                <div class="equipo-area">
-                  <span>Equipo técnico del área</span>
+                <div class="subequipo">
+                  <strong>Equipo técnico del área</strong>
 
                   <p>
-                    Apoyo especializado para cartografía, análisis espacial, monitoreo, planeación territorial y gestión de proyectos.
+                    Apoyo en cartografía, análisis espacial, monitoreo, planeación y gestión de proyectos.
                   </p>
                 </div>
               </article>
 
-              <article class="area-organigrama">
-                <div class="area-cabecera">
-                  <span class="area-numero">Área 02</span>
+              <article class="org-area">
+                <div class="org-area-principal">
+                  <span class="org-numero">Área 02</span>
 
                   <h4>Evaluación y Regulación Ambiental</h4>
 
-                  <p class="area-responsable">
+                  <p class="org-responsable">
                     <strong>Responsable:</strong><br>
                     M.C. Fabiola Torres Duque
                   </p>
                 </div>
 
-                <div class="equipo-area">
-                  <span>Equipo técnico del área</span>
+                <div class="subequipo">
+                  <strong>Equipo técnico del área</strong>
 
                   <p>
-                    Apoyo especializado para evaluación ambiental, regulación, gestión socioambiental y análisis de instrumentos territoriales.
+                    Apoyo en evaluación ambiental, regulación, gestión socioambiental e instrumentos territoriales.
                   </p>
                 </div>
               </article>
 
-              <article class="area-organigrama">
-                <div class="area-cabecera">
-                  <span class="area-numero">Área 03</span>
+              <article class="org-area">
+                <div class="org-area-principal">
+                  <span class="org-numero">Área 03</span>
 
                   <h4>Tecnologías de Información Geográfica</h4>
 
-                  <p class="area-responsable">
+                  <p class="org-responsable">
                     <strong>Responsable:</strong><br>
                     Lic. Luis Ángel Aguilar Orea
                   </p>
                 </div>
 
-                <div class="equipo-area">
-                  <span>Equipo técnico del área</span>
+                <div class="subequipo">
+                  <strong>Equipo técnico del área</strong>
 
                   <p>
-                    Apoyo especializado para bases de datos, sistemas de información geográfica, visores, cartografía digital y herramientas tecnológicas.
+                    Apoyo en SIG, bases de datos, cartografía digital, visores y herramientas geográficas.
                   </p>
                 </div>
               </article>
@@ -1831,26 +1581,22 @@
       <div class="contenedor contacto-grid">
 
         <div>
-          <p class="subtitulo">Centro Holístico de Estudios Territoriales</p>
+          <h2>Centro Holístico de Estudios Territoriales</h2>
 
-          <h2>Evidencia territorial para proyectos, análisis y decisiones mejor informadas.</h2>
-
-          <p class="contacto-texto">
-            Este portafolio concentra productos y recursos que permiten consultar experiencias, herramientas y referencias vinculadas con el análisis del territorio.
+          <p>
+            Xalapa, Veracruz, México.<br>
+            Empresa de reciente creación con experiencia técnica consolidada en el sector territorial y ambiental.
           </p>
         </div>
 
-        <aside class="tarjeta-contacto">
+        <aside class="contacto-logo">
           <img
-            class="logo-contacto"
+            class="logo-blanco"
             src="logo_CHET_tranparent_W.png"
             alt="Centro Holístico de Estudios Territoriales"
           >
 
-          <h3>Centro Holístico de Estudios Territoriales</h3>
-
           <p>
-            Xalapa, Veracruz, México.<br>
             Portafolio de Evidencias Territoriales.
           </p>
         </aside>
@@ -1866,12 +1612,12 @@
   <footer class="pie">
     <div class="contenedor pie-contenido">
       <p>© <span id="anio"></span> Centro Holístico de Estudios Territoriales · CHET.</p>
-      <p>Información territorial para decisiones sostenibles.</p>
+      <p>Información territorial para decisiones mejor informadas.</p>
     </div>
   </footer>
 
   <!-- =====================================================
-       FILTROS DEL PORTAFOLIO
+       FILTRO DEL PORTAFOLIO
   ====================================================== -->
   <script>
     const botonesFiltro = document.querySelectorAll(".filtro");
@@ -1879,7 +1625,7 @@
 
     botonesFiltro.forEach((boton) => {
       boton.addEventListener("click", () => {
-        const filtroSeleccionado = boton.dataset.filter;
+        const filtro = boton.dataset.filter;
 
         botonesFiltro.forEach((item) => {
           item.classList.remove("activo");
@@ -1888,12 +1634,9 @@
         boton.classList.add("activo");
 
         tarjetas.forEach((tarjeta) => {
-          const categorias = tarjeta.dataset.category.split(" ");
+          const categoria = tarjeta.dataset.category;
 
-          if (
-            filtroSeleccionado === "todos" ||
-            categorias.includes(filtroSeleccionado)
-          ) {
+          if (filtro === "todos" || categoria === filtro) {
             tarjeta.classList.remove("oculta");
           } else {
             tarjeta.classList.add("oculta");
@@ -1907,4 +1650,4 @@
 
 </body>
 </html>
-
+```
