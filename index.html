@@ -1,41 +1,39 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>CHET | Centro Holístico de Estudios Territoriales</title>
+  <title>CHET | Portafolio de Evidencias Territoriales</title>
 
   <meta
     name="description"
-    content="Centro Holístico de Estudios Territoriales. Geomática, cartografía, percepción remota, análisis territorial, monitoreo socioambiental y plataformas geoespaciales."
+    content="Portafolio de evidencias del Centro Holístico de Estudios Territoriales: visores geoespaciales, documentos técnicos y plataformas territoriales."
   >
 
   <style>
     :root {
-      --azul-oscuro: #123047;
-      --azul-profundo: #0b2235;
-      --azul-medio: #1f638e;
+      --azul-oscuro: #112f46;
+      --azul-profundo: #091f31;
+      --azul-medio: #1e668f;
       --azul-claro: #dcecf5;
 
-      --verde-oscuro: #255b43;
-      --verde: #3f7d58;
-      --verde-claro: #e1f0e6;
+      --verde-oscuro: #255d45;
+      --verde: #3e7f59;
+      --verde-claro: #e2f0e7;
 
-      --arena: #f2efe8;
       --gris-fondo: #f5f7f8;
       --gris-linea: #dce4e8;
       --gris-texto: #53616b;
       --blanco: #ffffff;
 
-      --sombra: 0 16px 35px rgba(16, 48, 71, 0.12);
+      --sombra: 0 16px 35px rgba(16, 48, 71, 0.13);
       --sombra-suave: 0 8px 20px rgba(16, 48, 71, 0.08);
 
-      --radio-lg: 20px;
-      --radio-md: 14px;
-      --radio-sm: 10px;
-
-      --max-width: 1240px;
+      --radio-grande: 20px;
+      --radio-medio: 15px;
+      --ancho-maximo: 1240px;
     }
 
     * {
@@ -48,15 +46,15 @@
 
     body {
       margin: 0;
+      color: #1f2d36;
       background: var(--gris-fondo);
-      color: #1d2a33;
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.6;
     }
 
     img {
-      max-width: 100%;
       display: block;
+      max-width: 100%;
     }
 
     a {
@@ -69,51 +67,51 @@
     }
 
     .contenedor {
-      width: min(92%, var(--max-width));
+      width: min(92%, var(--ancho-maximo));
       margin: 0 auto;
     }
 
-    /* =========================================================
+    /* =====================================================
        BARRA SUPERIOR
-    ========================================================= */
+    ====================================================== */
 
     .barra-superior {
+      color: rgba(255, 255, 255, 0.86);
       background: var(--azul-profundo);
-      color: rgba(255, 255, 255, 0.84);
       font-size: 0.82rem;
     }
 
     .barra-superior-contenido {
-      min-height: 36px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 18px;
+      min-height: 36px;
     }
 
     .barra-superior p {
       margin: 0;
     }
 
-    /* =========================================================
-       NAVEGACIÓN
-    ========================================================= */
+    /* =====================================================
+       ENCABEZADO Y NAVEGACIÓN
+    ====================================================== */
 
     .encabezado {
       position: sticky;
       top: 0;
       z-index: 1000;
+      border-bottom: 1px solid rgba(17, 47, 70, 0.1);
       background: rgba(255, 255, 255, 0.97);
-      border-bottom: 1px solid rgba(18, 48, 71, 0.1);
       backdrop-filter: blur(10px);
     }
 
     .navegacion {
-      min-height: 86px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 28px;
+      min-height: 86px;
     }
 
     .marca {
@@ -154,8 +152,8 @@
     .menu {
       display: flex;
       align-items: center;
-      gap: 20px;
-      color: #465865;
+      gap: 21px;
+      color: #465864;
       font-size: 0.9rem;
       font-weight: 700;
     }
@@ -168,43 +166,43 @@
       color: var(--verde);
     }
 
-    .menu-contacto {
+    .menu-destacado {
       padding: 10px 16px;
       border-radius: 8px;
       color: white !important;
       background: var(--azul-medio);
-      box-shadow: 0 5px 14px rgba(31, 99, 142, 0.2);
-      transition: background 0.2s ease, transform 0.2s ease !important;
+      box-shadow: 0 5px 14px rgba(30, 102, 143, 0.2);
+      transition: transform 0.2s ease, background 0.2s ease !important;
     }
 
-    .menu-contacto:hover {
+    .menu-destacado:hover {
       background: var(--azul-oscuro);
       transform: translateY(-2px);
     }
 
-    /* =========================================================
+    /* =====================================================
        PORTADA
-    ========================================================= */
+    ====================================================== */
 
     .portada {
       position: relative;
       overflow: hidden;
-      padding: 88px 0 82px;
+      padding: 86px 0 78px;
       color: white;
       background:
-        radial-gradient(circle at 88% 12%, rgba(118, 195, 138, 0.33), transparent 28%),
-        radial-gradient(circle at 10% 80%, rgba(70, 144, 190, 0.28), transparent 30%),
-        linear-gradient(135deg, #0b2235 0%, #123047 48%, #245d62 100%);
+        radial-gradient(circle at 87% 12%, rgba(119, 199, 143, 0.31), transparent 28%),
+        radial-gradient(circle at 8% 82%, rgba(69, 145, 191, 0.25), transparent 30%),
+        linear-gradient(135deg, #091f31 0%, #123047 52%, #245e61 100%);
     }
 
     .portada::before {
       content: "";
       position: absolute;
       inset: 0;
-      opacity: 0.14;
+      opacity: 0.13;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+        linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
       background-size: 48px 48px;
       mask-image: linear-gradient(to bottom, black, transparent);
       pointer-events: none;
@@ -213,15 +211,15 @@
     .portada-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.24fr) minmax(300px, 0.76fr);
+      grid-template-columns: minmax(0, 1.2fr) minmax(290px, 0.8fr);
       gap: 58px;
       align-items: center;
     }
 
     .logo-portada {
-      width: min(345px, 85%);
+      width: min(350px, 85%);
       height: auto;
-      margin-bottom: 26px;
+      margin-bottom: 25px;
       object-fit: contain;
     }
 
@@ -243,27 +241,27 @@
 
     .etiqueta::before {
       content: "●";
-      color: #8ed5a0;
-      font-size: 0.72rem;
+      color: #8bd49e;
+      font-size: 0.7rem;
     }
 
     .portada h1 {
       max-width: 760px;
       margin: 0;
-      font-size: clamp(2.55rem, 5vw, 4.35rem);
+      font-size: clamp(2.5rem, 5vw, 4.3rem);
       line-height: 1.08;
       letter-spacing: -1.7px;
     }
 
     .portada h1 span {
-      color: #9bd9ab;
+      color: #9cdaac;
     }
 
     .portada-descripcion {
       max-width: 720px;
       margin: 22px 0 0;
       color: rgba(255, 255, 255, 0.86);
-      font-size: 1.06rem;
+      font-size: 1.05rem;
     }
 
     .acciones-portada {
@@ -283,7 +281,7 @@
       border-radius: 9px;
       font-size: 0.92rem;
       font-weight: 800;
-      transition: transform 0.22s ease, background 0.22s ease, box-shadow 0.22s ease;
+      transition: transform 0.22s ease, background 0.22s ease;
     }
 
     .boton:hover {
@@ -313,19 +311,19 @@
     .panel-portada {
       padding: 28px;
       border: 1px solid rgba(255, 255, 255, 0.17);
-      border-radius: var(--radio-lg);
+      border-radius: var(--radio-grande);
       background: rgba(255, 255, 255, 0.08);
       box-shadow: 0 20px 45px rgba(0, 0, 0, 0.18);
       backdrop-filter: blur(10px);
     }
 
     .panel-portada h2 {
-      margin: 0 0 17px;
+      margin: 0 0 16px;
       color: white;
-      font-size: 1.13rem;
+      font-size: 1.12rem;
     }
 
-    .lista-especialidades {
+    .lista-evidencias {
       display: grid;
       gap: 15px;
       margin: 0;
@@ -333,16 +331,16 @@
       list-style: none;
     }
 
-    .lista-especialidades li {
+    .lista-evidencias li {
       display: grid;
-      grid-template-columns: 33px 1fr;
+      grid-template-columns: 34px 1fr;
       gap: 11px;
       align-items: start;
-      color: rgba(255, 255, 255, 0.86);
+      color: rgba(255, 255, 255, 0.87);
       font-size: 0.9rem;
     }
 
-    .lista-especialidades b {
+    .lista-evidencias b {
       display: grid;
       place-items: center;
       width: 30px;
@@ -353,12 +351,13 @@
       font-size: 0.75rem;
     }
 
-    /* =========================================================
-       SECCIONES GENERALES
-    ========================================================= */
+    /* =====================================================
+       PORTAFOLIO
+    ====================================================== */
 
-    section {
-      padding: 78px 0;
+    .portafolio {
+      padding: 80px 0;
+      background: white;
     }
 
     .encabezado-seccion {
@@ -366,11 +365,11 @@
       align-items: end;
       justify-content: space-between;
       gap: 30px;
-      margin-bottom: 35px;
+      margin-bottom: 34px;
     }
 
     .titulo-seccion {
-      max-width: 790px;
+      max-width: 800px;
     }
 
     .subtitulo {
@@ -385,7 +384,7 @@
     .titulo-seccion h2 {
       margin: 0;
       color: var(--azul-oscuro);
-      font-size: clamp(1.85rem, 3.2vw, 2.7rem);
+      font-size: clamp(1.9rem, 3.2vw, 2.75rem);
       line-height: 1.18;
       letter-spacing: -0.7px;
     }
@@ -404,171 +403,6 @@
       color: #456353;
       background: var(--verde-claro);
       font-size: 0.86rem;
-    }
-
-    /* =========================================================
-       PRESENTACIÓN
-    ========================================================= */
-
-    .presentacion {
-      background: white;
-    }
-
-    .presentacion-grid {
-      display: grid;
-      grid-template-columns: 1.08fr 0.92fr;
-      gap: 48px;
-      align-items: stretch;
-    }
-
-    .texto-presentacion p {
-      color: var(--gris-texto);
-      font-size: 1rem;
-    }
-
-    .texto-presentacion p:first-child {
-      margin-top: 0;
-    }
-
-    .principios {
-      display: grid;
-      gap: 13px;
-      margin-top: 27px;
-    }
-
-    .principio {
-      display: grid;
-      grid-template-columns: 47px 1fr;
-      gap: 13px;
-      align-items: center;
-      padding: 15px;
-      border: 1px solid var(--gris-linea);
-      border-radius: 12px;
-      background: #fbfcfd;
-    }
-
-    .principio-icono {
-      display: grid;
-      place-items: center;
-      width: 45px;
-      height: 45px;
-      border-radius: 11px;
-      color: var(--verde);
-      background: var(--verde-claro);
-      font-size: 1.14rem;
-      font-weight: 800;
-    }
-
-    .principio h3 {
-      margin: 0 0 3px;
-      color: var(--azul-oscuro);
-      font-size: 0.97rem;
-    }
-
-    .principio p {
-      margin: 0;
-      color: var(--gris-texto);
-      font-size: 0.85rem;
-    }
-
-    .panel-capacidades {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      padding: 26px;
-      border-radius: var(--radio-lg);
-      color: white;
-      background:
-        radial-gradient(circle at top right, rgba(131, 212, 157, 0.28), transparent 27%),
-        linear-gradient(145deg, #123047, #2a6b58);
-      box-shadow: var(--sombra);
-    }
-
-    .capacidad {
-      min-height: 150px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 15px;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 13px;
-      background: rgba(255, 255, 255, 0.06);
-    }
-
-    .capacidad strong {
-      display: block;
-      color: #d9f4df;
-      font-size: 1.9rem;
-      line-height: 1;
-    }
-
-    .capacidad span {
-      margin-top: 9px;
-      color: rgba(255, 255, 255, 0.86);
-      font-size: 0.85rem;
-      line-height: 1.4;
-    }
-
-    /* =========================================================
-       SERVICIOS
-    ========================================================= */
-
-    .servicios {
-      background: #edf2f4;
-    }
-
-    .grid-servicios {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .servicio {
-      min-height: 220px;
-      padding: 25px;
-      border: 1px solid rgba(18, 48, 71, 0.09);
-      border-radius: 16px;
-      background: white;
-      box-shadow: var(--sombra-suave);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
-    }
-
-    .servicio:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--sombra);
-    }
-
-    .servicio-icono {
-      display: grid;
-      place-items: center;
-      width: 48px;
-      height: 48px;
-      margin-bottom: 17px;
-      border-radius: 12px;
-      color: var(--azul-medio);
-      background: var(--azul-claro);
-      font-size: 1.2rem;
-      font-weight: 800;
-    }
-
-    .servicio h3 {
-      margin: 0 0 9px;
-      color: var(--azul-oscuro);
-      font-size: 1.05rem;
-    }
-
-    .servicio p {
-      margin: 0;
-      color: var(--gris-texto);
-      font-size: 0.9rem;
-    }
-
-    /* =========================================================
-       PORTAFOLIO
-    ========================================================= */
-
-    .portafolio {
-      background: white;
     }
 
     .filtros {
@@ -607,7 +441,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      min-height: 425px;
+      min-height: 423px;
       border: 1px solid #dfe7eb;
       border-radius: 17px;
       background: white;
@@ -638,7 +472,7 @@
       padding: 6px 10px;
       border-radius: 20px;
       color: white;
-      background: rgba(10, 35, 53, 0.77);
+      background: rgba(10, 35, 53, 0.78);
       backdrop-filter: blur(5px);
       font-size: 0.68rem;
       font-weight: 800;
@@ -796,12 +630,79 @@
       white-space: nowrap;
     }
 
-    /* =========================================================
+    /* =====================================================
+       PRESENTACIÓN BREVE
+    ====================================================== */
+
+    .presentacion {
+      padding: 75px 0;
+      background: #edf2f4;
+    }
+
+    .presentacion-grid {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 45px;
+      align-items: center;
+    }
+
+    .presentacion h2 {
+      margin: 0;
+      color: var(--azul-oscuro);
+      font-size: clamp(1.85rem, 3vw, 2.55rem);
+      line-height: 1.2;
+      letter-spacing: -0.6px;
+    }
+
+    .presentacion p {
+      color: var(--gris-texto);
+      font-size: 1rem;
+    }
+
+    .panel-datos {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 26px;
+      border-radius: var(--radio-grande);
+      color: white;
+      background:
+        radial-gradient(circle at top right, rgba(131, 212, 157, 0.28), transparent 27%),
+        linear-gradient(145deg, #123047, #2a6b58);
+      box-shadow: var(--sombra);
+    }
+
+    .dato {
+      min-height: 132px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 15px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 13px;
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .dato strong {
+      color: #d9f4df;
+      font-size: 1.8rem;
+      line-height: 1;
+    }
+
+    .dato span {
+      margin-top: 9px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 0.84rem;
+      line-height: 1.4;
+    }
+
+    /* =====================================================
        EQUIPO
-    ========================================================= */
+    ====================================================== */
 
     .equipo {
-      background: #edf2f4;
+      padding: 78px 0;
+      background: white;
     }
 
     .grid-equipo {
@@ -864,33 +765,18 @@
       font-size: 0.89rem;
     }
 
-    .etiquetas-equipo {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 7px;
-      margin-top: 17px;
-    }
-
-    .etiquetas-equipo span {
-      padding: 5px 9px;
-      border-radius: 20px;
-      color: #466170;
-      background: #edf3f6;
-      font-size: 0.7rem;
-      font-weight: 800;
-    }
-
-    /* =========================================================
-       CONTACTO
-    ========================================================= */
+    /* =====================================================
+       CONTACTO Y PIE
+    ====================================================== */
 
     .contacto {
       position: relative;
       overflow: hidden;
+      padding: 74px 0;
       color: white;
       background:
         radial-gradient(circle at 86% 14%, rgba(126, 210, 153, 0.28), transparent 25%),
-        linear-gradient(135deg, #0b2235, #17485d);
+        linear-gradient(135deg, #091f31, #17485d);
     }
 
     .contacto-grid {
@@ -945,14 +831,10 @@
       font-size: 0.9rem;
     }
 
-    /* =========================================================
-       PIE DE PÁGINA
-    ========================================================= */
-
     .pie {
       padding: 28px 0;
-      background: #f8fafb;
       color: #5e6e78;
+      background: #f8fafb;
       font-size: 0.83rem;
     }
 
@@ -967,9 +849,9 @@
       margin: 0;
     }
 
-    /* =========================================================
+    /* =====================================================
        RESPONSIVE
-    ========================================================= */
+    ====================================================== */
 
     @media (max-width: 1000px) {
       .portada-grid,
@@ -980,10 +862,6 @@
 
       .panel-portada {
         max-width: 700px;
-      }
-
-      .grid-servicios {
-        grid-template-columns: repeat(2, 1fr);
       }
 
       .grid-equipo {
@@ -1006,13 +884,13 @@
       }
 
       .barra-superior-contenido {
-        padding: 7px 0;
         gap: 3px;
+        padding: 7px 0;
       }
 
       .navegacion {
-        padding: 14px 0;
         gap: 14px;
+        padding: 14px 0;
       }
 
       .marca {
@@ -1039,23 +917,21 @@
       }
 
       .portada h1 {
-        font-size: 2.5rem;
+        font-size: 2.45rem;
       }
 
       .logo-portada {
         width: min(270px, 82%);
       }
 
-      section {
+      .portafolio,
+      .presentacion,
+      .equipo {
         padding: 58px 0;
       }
 
-      .grid-servicios,
-      .panel-capacidades {
-        grid-template-columns: 1fr;
-      }
-
-      .galeria {
+      .galeria,
+      .panel-datos {
         grid-template-columns: 1fr;
       }
 
@@ -1086,7 +962,7 @@
   <div class="barra-superior">
     <div class="contenedor barra-superior-contenido">
       <p>Centro Holístico de Estudios Territoriales · CHET</p>
-      <p>Geomática · Planeación territorial · Monitoreo socioambiental</p>
+      <p>Portafolio de Evidencias Territoriales</p>
     </div>
   </div>
 
@@ -1110,11 +986,11 @@
       </a>
 
       <nav class="menu" aria-label="Navegación principal">
-        <a href="#nosotros">Nosotros</a>
-        <a href="#servicios">Líneas de trabajo</a>
-        <a href="#portafolio">Portafolio</a>
+        <a href="#inicio">Inicio</a>
+        <a href="#portafolio">Evidencias</a>
+        <a href="#nosotros">Centro</a>
         <a href="#equipo">Equipo</a>
-        <a class="menu-contacto" href="#contacto">Contacto</a>
+        <a class="menu-destacado" href="#contacto">Contacto</a>
       </nav>
 
     </div>
@@ -1135,52 +1011,52 @@
             alt="Centro Holístico de Estudios Territoriales"
           >
 
-          <div class="etiqueta">Territorio, información y soluciones</div>
+          <div class="etiqueta">Portafolio de evidencias</div>
 
           <h1>
-            Conocimiento territorial para
-            <span>decisiones sostenibles.</span>
+            Información territorial que se convierte en
+            <span>resultados verificables.</span>
           </h1>
 
           <p class="portada-descripcion">
-            El Centro Holístico de Estudios Territoriales articula análisis geoespacial,
-            cartografía, percepción remota, gestión socioambiental y comunicación territorial
-            para comprender procesos complejos y generar productos aplicables.
+            Este portafolio reúne visores geoespaciales, documentos técnicos y plataformas
+            territoriales que evidencian experiencias de análisis, monitoreo, cartografía,
+            conservación y gestión socioambiental.
           </p>
 
           <div class="acciones-portada">
             <a class="boton boton-primario" href="#portafolio">
-              Explorar portafolio <span>↓</span>
+              Ver evidencias <span>↓</span>
             </a>
 
             <a class="boton boton-secundario" href="#nosotros">
-              Conocer al Centro
+              Conocer CHET
             </a>
           </div>
         </div>
 
         <aside class="panel-portada">
-          <h2>Áreas de especialización</h2>
+          <h2>Contenido del portafolio</h2>
 
-          <ul class="lista-especialidades">
+          <ul class="lista-evidencias">
             <li>
               <b>01</b>
-              <span>Cartografía temática, bases de datos geoespaciales y sistemas de información geográfica.</span>
+              <span>Visores desarrollados para consulta, monitoreo y análisis territorial.</span>
             </li>
 
             <li>
               <b>02</b>
-              <span>Percepción remota, análisis multitemporal y monitoreo con imágenes ópticas y radar.</span>
+              <span>Documentos técnicos vinculados con conservación, planeación y evaluación ambiental.</span>
             </li>
 
             <li>
               <b>03</b>
-              <span>Planeación territorial, conectividad ecológica, conservación y restauración ambiental.</span>
+              <span>Plataformas externas de referencia para visualización de información geoespacial.</span>
             </li>
 
             <li>
               <b>04</b>
-              <span>Visores web, plataformas territoriales y comunicación clara de resultados geoespaciales.</span>
+              <span>Evidencias organizadas para facilitar su consulta, lectura y presentación institucional.</span>
             </li>
           </ul>
         </aside>
@@ -1189,197 +1065,32 @@
     </section>
 
     <!-- ===================================================
-         NOSOTROS
-    ==================================================== -->
-    <section class="presentacion" id="nosotros">
-      <div class="contenedor">
-
-        <div class="encabezado-seccion">
-          <div class="titulo-seccion">
-            <p class="subtitulo">Quiénes somos</p>
-
-            <h2>Un enfoque integral para analizar, interpretar y gestionar el territorio.</h2>
-
-            <p>
-              Articulamos conocimiento técnico, información espacial y una visión territorial para generar herramientas útiles en procesos de conservación, monitoreo y planeación.
-            </p>
-          </div>
-
-          <div class="nota-seccion">
-            Convertimos datos complejos en cartografía, análisis y plataformas accesibles para apoyar decisiones territoriales informadas.
-          </div>
-        </div>
-
-        <div class="presentacion-grid">
-
-          <div class="texto-presentacion">
-            <p>
-              El <strong>Centro Holístico de Estudios Territoriales (CHET)</strong> es un espacio
-              interdisciplinario orientado al estudio aplicado de los territorios y sus dinámicas
-              ambientales, sociales, productivas y ecológicas.
-            </p>
-
-            <p>
-              Nuestro trabajo se enfoca en fortalecer procesos de planeación, conservación,
-              monitoreo, restauración, ordenamiento ecológico y gestión territorial a través de
-              productos cartográficos, análisis geoespaciales, visores interactivos y documentación
-              técnica para instituciones, organizaciones, comunidades y proyectos de investigación.
-            </p>
-
-            <div class="principios">
-
-              <article class="principio">
-                <div class="principio-icono">◈</div>
-                <div>
-                  <h3>Rigor técnico</h3>
-                  <p>Metodologías reproducibles, información trazable y resultados espacialmente verificables.</p>
-                </div>
-              </article>
-
-              <article class="principio">
-                <div class="principio-icono">◌</div>
-                <div>
-                  <h3>Visión territorial</h3>
-                  <p>Comprensión de las relaciones entre paisaje, biodiversidad, sociedad y actividades productivas.</p>
-                </div>
-              </article>
-
-              <article class="principio">
-                <div class="principio-icono">↗</div>
-                <div>
-                  <h3>Aplicación práctica</h3>
-                  <p>Productos diseñados para aportar evidencia en procesos reales de decisión y gestión territorial.</p>
-                </div>
-              </article>
-
-            </div>
-          </div>
-
-          <div class="panel-capacidades">
-            <div class="capacidad">
-              <strong>SIG</strong>
-              <span>Integración, depuración y análisis de bases de datos geoespaciales.</span>
-            </div>
-
-            <div class="capacidad">
-              <strong>SAR</strong>
-              <span>Monitoreo territorial con imágenes de radar y análisis de respuesta superficial.</span>
-            </div>
-
-            <div class="capacidad">
-              <strong>MSI</strong>
-              <span>Procesamiento de imágenes Sentinel-2, Landsat y otras fuentes ópticas.</span>
-            </div>
-
-            <div class="capacidad">
-              <strong>WEB</strong>
-              <span>Visores, mapas interactivos y plataformas para comunicar información territorial.</span>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================
-         LÍNEAS DE TRABAJO
-    ==================================================== -->
-    <section class="servicios" id="servicios">
-      <div class="contenedor">
-
-        <div class="encabezado-seccion">
-          <div class="titulo-seccion">
-            <p class="subtitulo">Líneas de trabajo</p>
-
-            <h2>Servicios técnicos para comprender, monitorear y comunicar el territorio.</h2>
-
-            <p>
-              Las líneas de trabajo pueden desarrollarse como productos específicos o articularse dentro de proyectos territoriales integrales.
-            </p>
-          </div>
-        </div>
-
-        <div class="grid-servicios">
-
-          <article class="servicio">
-            <div class="servicio-icono">⌖</div>
-            <h3>Geomática y SIG</h3>
-            <p>
-              Integración de bases geoespaciales, diseño de geodatabases, homologación de capas, análisis espacial y producción cartográfica.
-            </p>
-          </article>
-
-          <article class="servicio">
-            <div class="servicio-icono">◫</div>
-            <h3>Percepción remota</h3>
-            <p>
-              Procesamiento de imágenes satelitales, radar, drones y modelos de elevación para monitoreo territorial y ambiental.
-            </p>
-          </article>
-
-          <article class="servicio">
-            <div class="servicio-icono">⌁</div>
-            <h3>Conectividad ecológica</h3>
-            <p>
-              Modelado de resistencia, corredores funcionales, análisis de paisaje y priorización espacial para conservación y restauración.
-            </p>
-          </article>
-
-          <article class="servicio">
-            <div class="servicio-icono">▦</div>
-            <h3>Planeación territorial</h3>
-            <p>
-              Apoyo técnico para ordenamiento ecológico, subzonificación, diagnósticos, evaluación multicriterio y programas de manejo.
-            </p>
-          </article>
-
-          <article class="servicio">
-            <div class="servicio-icono">◉</div>
-            <h3>Monitoreo socioambiental</h3>
-            <p>
-              Indicadores espaciales y temporales para el seguimiento de cobertura, incendios, ecosistemas costeros, biodiversidad y agroecosistemas.
-            </p>
-          </article>
-
-          <article class="servicio">
-            <div class="servicio-icono">↗</div>
-            <h3>Visores y comunicación</h3>
-            <p>
-              Desarrollo de visores web, tableros y productos cartográficos para facilitar la consulta y comprensión de información territorial.
-            </p>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ===================================================
-         PORTAFOLIO
+         PORTAFOLIO DE EVIDENCIAS
     ==================================================== -->
     <section class="portafolio" id="portafolio">
       <div class="contenedor">
 
         <div class="encabezado-seccion">
           <div class="titulo-seccion">
-            <p class="subtitulo">Portafolio</p>
+            <p class="subtitulo">Portafolio de evidencias</p>
 
             <h2>Visores, documentos técnicos y plataformas territoriales.</h2>
 
             <p>
-              Selección de aplicaciones interactivas, documentos técnicos de consulta y plataformas cartográficas vinculadas con el análisis territorial.
+              Selección de herramientas, productos cartográficos y recursos de consulta vinculados con la experiencia técnica del Centro Holístico de Estudios Territoriales.
             </p>
           </div>
 
           <div class="nota-seccion">
-            Los documentos y plataformas externas se presentan como recursos de consulta. Los derechos y contenidos pertenecen a sus instituciones y autores responsables.
+            Los documentos y plataformas externas se incluyen como evidencia de consulta y referencia territorial. Sus contenidos y derechos pertenecen a sus autores e instituciones responsables.
           </div>
         </div>
 
-        <div class="filtros" aria-label="Filtrar contenido del portafolio">
-          <button class="filtro activo" type="button" data-filter="todos">Todos</button>
+        <div class="filtros" aria-label="Filtrar evidencias del portafolio">
+          <button class="filtro activo" type="button" data-filter="todos">Todas las evidencias</button>
           <button class="filtro" type="button" data-filter="visor">Visores CHET</button>
           <button class="filtro" type="button" data-filter="documento">Documentos técnicos</button>
-          <button class="filtro" type="button" data-filter="plataforma">Plataformas externas</button>
+          <button class="filtro" type="button" data-filter="plataforma">Plataformas territoriales</button>
         </div>
 
         <div class="galeria">
@@ -1402,7 +1113,7 @@
               <h3>Monitoreo de agroecosistemas tropicales</h3>
 
               <p>
-                Visor interactivo para explorar patrones territoriales y aplicaciones de percepción remota en agroecosistemas del trópico húmedo.
+                Visor interactivo orientado a la exploración de patrones territoriales y aplicaciones de percepción remota en agroecosistemas del trópico húmedo.
               </p>
 
               <div class="tarjeta-acciones">
@@ -1466,7 +1177,7 @@
               <h3>Uso de suelo y coberturas territoriales</h3>
 
               <p>
-                Visor de cartografía temática para consulta de coberturas, uso del suelo y patrones espaciales en la región norte de Yucatán.
+                Visor de cartografía temática para consultar coberturas, uso del suelo y patrones espaciales de la región norte de Yucatán.
               </p>
 
               <div class="tarjeta-acciones">
@@ -1502,7 +1213,7 @@
               <h3>Informe de la Reserva Arrecifal Los Tuxtlas</h3>
 
               <p>
-                Documento técnico de consulta sobre procesos ambientales, conservación y territorio en la región de Los Tuxtlas.
+                Documento técnico de consulta sobre conservación, procesos ambientales y territorio en la región de Los Tuxtlas.
               </p>
 
               <div class="tarjeta-acciones">
@@ -1598,7 +1309,7 @@
               <h3>Manifestación de Impacto Ambiental: Chicxulub</h3>
 
               <p>
-                Documento de consulta relacionado con componentes territoriales y ambientales de un proyecto de parque ecológico en Chicxulub.
+                Documento de consulta vinculado con componentes ambientales y territoriales de un proyecto de parque ecológico en Chicxulub.
               </p>
 
               <div class="tarjeta-acciones">
@@ -1617,12 +1328,12 @@
           </article>
 
           <!-- =================================================
-               PLATAFORMAS EXTERNAS
+               PLATAFORMAS TERRITORIALES EXTERNAS
           ================================================== -->
 
           <article class="tarjeta" data-category="plataforma">
             <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <span class="tarjeta-etiqueta">Plataforma territorial</span>
               <div class="portada-tarjeta portada-externa-costa">
                 <span>EC</span>
               </div>
@@ -1634,7 +1345,7 @@
               <h3>Ecosistemas costeros</h3>
 
               <p>
-                Recurso interactivo externo para explorar información territorial y ambiental asociada con ecosistemas costeros.
+                Recurso interactivo externo para explorar información territorial y ambiental relacionada con ecosistemas costeros.
               </p>
 
               <div class="tarjeta-acciones">
@@ -1647,14 +1358,14 @@
                   Abrir plataforma <span class="flecha">→</span>
                 </a>
 
-                <span class="estado">Externo</span>
+                <span class="estado">Externa</span>
               </div>
             </div>
           </article>
 
           <article class="tarjeta" data-category="plataforma">
             <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <span class="tarjeta-etiqueta">Plataforma territorial</span>
               <div class="portada-tarjeta portada-externa-manati">
                 <span>MAN</span>
               </div>
@@ -1679,14 +1390,14 @@
                   Abrir plataforma <span class="flecha">→</span>
                 </a>
 
-                <span class="estado">Externo</span>
+                <span class="estado">Externa</span>
               </div>
             </div>
           </article>
 
           <article class="tarjeta" data-category="plataforma">
             <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <span class="tarjeta-etiqueta">Plataforma territorial</span>
               <div class="portada-tarjeta portada-externa-recimy">
                 <span>REC</span>
               </div>
@@ -1698,7 +1409,7 @@
               <h3>RECIMY</h3>
 
               <p>
-                Plataforma cartográfica externa incorporada como referencia para la consulta y comunicación de información geoespacial.
+                Plataforma cartográfica externa incorporada como evidencia de referencia para consulta y comunicación de información geoespacial.
               </p>
 
               <div class="tarjeta-acciones">
@@ -1711,14 +1422,14 @@
                   Abrir plataforma <span class="flecha">→</span>
                 </a>
 
-                <span class="estado">Externo</span>
+                <span class="estado">Externa</span>
               </div>
             </div>
           </article>
 
           <article class="tarjeta" data-category="plataforma">
             <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <span class="tarjeta-etiqueta">Plataforma territorial</span>
               <div class="portada-tarjeta portada-externa-incendios">
                 <span>FUE</span>
               </div>
@@ -1743,14 +1454,14 @@
                   Abrir plataforma <span class="flecha">→</span>
                 </a>
 
-                <span class="estado">Externo</span>
+                <span class="estado">Externa</span>
               </div>
             </div>
           </article>
 
           <article class="tarjeta" data-category="plataforma">
             <div class="tarjeta-media">
-              <span class="tarjeta-etiqueta">Plataforma externa</span>
+              <span class="tarjeta-etiqueta">Plataforma territorial</span>
               <div class="portada-tarjeta portada-externa-atlas">
                 <span>AT</span>
               </div>
@@ -1775,12 +1486,57 @@
                   Abrir plataforma <span class="flecha">→</span>
                 </a>
 
-                <span class="estado">Externo</span>
+                <span class="estado">Externa</span>
               </div>
             </div>
           </article>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ===================================================
+         CENTRO
+    ==================================================== -->
+    <section class="presentacion" id="nosotros">
+      <div class="contenedor presentacion-grid">
+
+        <div>
+          <p class="subtitulo">Centro Holístico de Estudios Territoriales</p>
+
+          <h2>Una plataforma interdisciplinaria orientada a la producción y comunicación de evidencia territorial.</h2>
+
+          <p>
+            CHET articula cartografía, análisis geoespacial, percepción remota, sistemas de información geográfica y gestión socioambiental para apoyar procesos de monitoreo, planeación, conservación y toma de decisiones.
+          </p>
+
+          <p>
+            El portafolio reúne evidencias consultables de herramientas, productos y referencias técnicas vinculadas con distintos procesos territoriales y ambientales.
+          </p>
+        </div>
+
+        <div class="panel-datos">
+          <div class="dato">
+            <strong>03</strong>
+            <span>Visores geoespaciales desarrollados por CHET.</span>
+          </div>
+
+          <div class="dato">
+            <strong>04</strong>
+            <span>Documentos técnicos de referencia territorial.</span>
+          </div>
+
+          <div class="dato">
+            <strong>05</strong>
+            <span>Plataformas externas de consulta geoespacial.</span>
+          </div>
+
+          <div class="dato">
+            <strong>12</strong>
+            <span>Evidencias organizadas en un único portafolio institucional.</span>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -1794,10 +1550,10 @@
           <div class="titulo-seccion">
             <p class="subtitulo">Equipo</p>
 
-            <h2>Un equipo interdisciplinario para el análisis y la gestión territorial.</h2>
+            <h2>Integrantes del Centro Holístico de Estudios Territoriales.</h2>
 
             <p>
-              La colaboración entre perfiles técnicos y territoriales permite integrar información, análisis y comunicación en productos aplicables.
+              El trabajo del Centro se apoya en la integración de capacidades técnicas, territoriales y de gestión de información.
             </p>
           </div>
         </div>
@@ -1817,15 +1573,8 @@
               </p>
 
               <p>
-                Especialista en sistemas de información geográfica, percepción remota, análisis espacial, monitoreo territorial, cartografía aplicada y desarrollo de visores geoespaciales.
+                Especialista en sistemas de información geográfica, percepción remota, análisis espacial, cartografía aplicada, monitoreo territorial y desarrollo de visores geoespaciales.
               </p>
-
-              <div class="etiquetas-equipo">
-                <span>Geomática</span>
-                <span>Teledetección</span>
-                <span>SIG</span>
-                <span>Conectividad</span>
-              </div>
             </div>
           </article>
 
@@ -1842,13 +1591,6 @@
               <p>
                 Integrante del Centro con participación en procesos de análisis territorial, articulación de información, gestión socioambiental y fortalecimiento de proyectos interdisciplinarios.
               </p>
-
-              <div class="etiquetas-equipo">
-                <span>Análisis territorial</span>
-                <span>Gestión ambiental</span>
-                <span>Proyectos</span>
-                <span>Colaboración</span>
-              </div>
             </div>
           </article>
 
@@ -1865,13 +1607,6 @@
               <p>
                 Integrante del Centro con apoyo en la organización, integración, gestión y comunicación de productos e información territorial.
               </p>
-
-              <div class="etiquetas-equipo">
-                <span>Gestión de información</span>
-                <span>Apoyo técnico</span>
-                <span>Cartografía</span>
-                <span>Comunicación</span>
-              </div>
             </div>
           </article>
 
@@ -1886,13 +1621,12 @@
       <div class="contenedor contacto-grid">
 
         <div>
-          <p class="subtitulo">Colaboraciones y proyectos</p>
+          <p class="subtitulo">Centro Holístico de Estudios Territoriales</p>
 
-          <h2>Herramientas territoriales para decisiones mejor informadas.</h2>
+          <h2>Evidencia territorial para proyectos, análisis y decisiones mejor informadas.</h2>
 
           <p class="contacto-texto">
-            CHET participa en proyectos de investigación, conservación, planeación territorial,
-            monitoreo ambiental, producción cartográfica y desarrollo de plataformas geoespaciales.
+            Este portafolio concentra productos y recursos que permiten consultar experiencias, herramientas y referencias vinculadas con el análisis del territorio.
           </p>
         </div>
 
@@ -1907,7 +1641,7 @@
 
           <p>
             Xalapa, Veracruz, México.<br>
-            Información territorial para decisiones sostenibles.
+            Portafolio de Evidencias Territoriales.
           </p>
         </aside>
 
@@ -1922,12 +1656,12 @@
   <footer class="pie">
     <div class="contenedor pie-contenido">
       <p>© <span id="anio"></span> Centro Holístico de Estudios Territoriales · CHET.</p>
-      <p>Geomática, monitoreo y gestión territorial.</p>
+      <p>Información territorial para decisiones sostenibles.</p>
     </div>
   </footer>
 
   <!-- =====================================================
-       FILTRO DEL PORTAFOLIO
+       FILTROS DEL PORTAFOLIO
   ====================================================== -->
   <script>
     const botonesFiltro = document.querySelectorAll(".filtro");
@@ -1935,7 +1669,7 @@
 
     botonesFiltro.forEach((boton) => {
       boton.addEventListener("click", () => {
-        const filtro = boton.dataset.filter;
+        const filtroSeleccionado = boton.dataset.filter;
 
         botonesFiltro.forEach((item) => {
           item.classList.remove("activo");
@@ -1946,7 +1680,10 @@
         tarjetas.forEach((tarjeta) => {
           const categorias = tarjeta.dataset.category.split(" ");
 
-          if (filtro === "todos" || categorias.includes(filtro)) {
+          if (
+            filtroSeleccionado === "todos" ||
+            categorias.includes(filtroSeleccionado)
+          ) {
             tarjeta.classList.remove("oculta");
           } else {
             tarjeta.classList.add("oculta");
